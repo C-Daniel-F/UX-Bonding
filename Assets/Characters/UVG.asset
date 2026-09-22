@@ -1,0 +1,1661 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82a6bb3138b1a1d45a4e8f8846bf11ae, type: 3}
+  m_Name: UVG
+  m_EditorClassIdentifier: 
+  storyId: UVG
+  storyName: UVG
+  scenes:
+  - sceneId: titlescreen
+    sceneName: titlescreen
+    music: {fileID: 8300000, guid: 245af3c122368214899a5de14052db5c, type: 3}
+    dialogueNodes:
+    - nodeId: title_01
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: 0e1ba1d00003df44696a643af076e4ba, type: 2}
+      soundEffect: {fileID: 0}
+      text: 
+      next:
+        sceneId: act1_intro
+        nodeId: intro_01
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 1
+      hideRightCharacter: 1
+  - sceneId: act1_intro
+    sceneName: Acto 1 Intro
+    music: {fileID: 8300000, guid: 6cb968124c84b474f841abe31d27e62d, type: 3}
+    dialogueNodes:
+    - nodeId: intro_01
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: eec78088c5f60aa4dbbb49bb74701594, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Eres un nuevo estudiante en UVG, preparado para iniciar una nueva etapa
+        de tu vida y decisiones que te cuestionaras en 50 a\xF1os."
+      next:
+        sceneId: act1_intro
+        nodeId: intro_02
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: intro_02
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: eec78088c5f60aa4dbbb49bb74701594, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Acabas de llegar al campus, \xBFqu\xE9 deber\xEDas hacer?"
+      next:
+        sceneId: act1_intro
+        nodeId: 
+      choices:
+      - choiceId: Ir a Cayala
+        text: Ir a Cayala
+        destination:
+          sceneId: act1_cayala
+          nodeId: cayala_01
+      - choiceId: Ir a ver la presentacion del inicio.
+        text: Ir a ver la presentacion del inicio.
+        destination:
+          sceneId: act1_presentacion
+          nodeId: presentacion_01
+      - choiceId: Ir a la cafeteria
+        text: Ir a la cafeteria
+        destination:
+          sceneId: act1_cafeteria
+          nodeId: cafe_01
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+  - sceneId: act1_cayala
+    sceneName: Cayala
+    music: {fileID: 0}
+    dialogueNodes:
+    - nodeId: cayala_01
+      speaker: {fileID: 11400000, guid: 744ec87fa570be14d8cb7af3caf450f6, type: 2}
+      background: {fileID: 11400000, guid: eec78088c5f60aa4dbbb49bb74701594, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Mmmmmmm, Cayal\xE1 queda cerca, \xBFno?"
+      next:
+        sceneId: act1_cayala
+        nodeId: cayala_02
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: cayala_02
+      speaker: {fileID: 11400000, guid: 744ec87fa570be14d8cb7af3caf450f6, type: 2}
+      background: {fileID: 11400000, guid: eec78088c5f60aa4dbbb49bb74701594, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Podr\xEDa dirigirme para all\xE1."
+      next:
+        sceneId: act1_cayala
+        nodeId: cayala_03
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: cayala_03
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: 8a6092f57b446864da6c5899a4ce7eda, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Te diriges hacia tu auto, lo enciendes y te diriges para Cayal\xE1,
+        encuentras algo de cola, pero llegas sin problemas."
+      next:
+        sceneId: act1_cayala
+        nodeId: cayala_04
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: cayala_04
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: 8a6092f57b446864da6c5899a4ce7eda, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Mucho mejor que estar en la inducci\xF3n, \xA1ahora podr\xE9 ir a comprar
+        todo lo que quiera!"
+      next:
+        sceneId: act1_cayala
+        nodeId: cayala_05
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: cayala_05
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: 8a6092f57b446864da6c5899a4ce7eda, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Dicho y hecho, te gastaste hasta el \xFAltimo centavo que ten\xEDas,
+        incluyendo el dinero que ten\xEDas previsto para la universidad."
+      next:
+        sceneId: act1_cayala
+        nodeId: cayala_06
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: cayala_06
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: 8a6092f57b446864da6c5899a4ce7eda, type: 2}
+      soundEffect: {fileID: 0}
+      text: Terminas quedandote sin dinero.
+      next:
+        sceneId: act1_cayala
+        nodeId: cayala_07
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: cayala_07
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: 8a6092f57b446864da6c5899a4ce7eda, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Eso podr\xEDa terminar muy mal\u2026 Mejor tomo otra decisi\xF3n."
+      next:
+        sceneId: act1_intro
+        nodeId: intro_02
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+  - sceneId: act1_presentacion
+    sceneName: Presentacion
+    music: {fileID: 8300000, guid: 6cb968124c84b474f841abe31d27e62d, type: 3}
+    dialogueNodes:
+    - nodeId: presentacion_01
+      speaker: {fileID: 11400000, guid: 744ec87fa570be14d8cb7af3caf450f6, type: 2}
+      background: {fileID: 11400000, guid: eec78088c5f60aa4dbbb49bb74701594, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Parece que van a dar m\xE1s info sobre la uni, quiz\xE1 pueda aprender
+        algo\u2026"
+      next:
+        sceneId: act1_presentacion
+        nodeId: presentacion_02
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: presentacion_02
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: 6be65f35063d21749a301ead174f8452, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Al instante que tomas asiento, quedas dormido. Pierdes de toda la informaci\xF3n
+        importante que te dieron."
+      next:
+        sceneId: act1_presentacion
+        nodeId: presentacion_03
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: presentacion_03
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: 6be65f35063d21749a301ead174f8452, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Creo que haberte desvelado subiendo el pase de batalla no fue la mejor
+        elecci\xF3n."
+      next:
+        sceneId: act1_presentacion
+        nodeId: presentacion_04
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: presentacion_04
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: 6be65f35063d21749a301ead174f8452, type: 2}
+      soundEffect: {fileID: 0}
+      text: Al cabo de unos minutos terminas despertando.
+      next:
+        sceneId: act1_presentacion
+        nodeId: presentacion_05
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: presentacion_05
+      speaker: {fileID: 11400000, guid: 744ec87fa570be14d8cb7af3caf450f6, type: 2}
+      background: {fileID: 11400000, guid: 6be65f35063d21749a301ead174f8452, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Uh, \xBF\xBFya se acab\xF3??"
+      next:
+        sceneId: act1_presentacion
+        nodeId: presentacion_06
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: presentacion_06
+      speaker: {fileID: 11400000, guid: 744ec87fa570be14d8cb7af3caf450f6, type: 2}
+      background: {fileID: 11400000, guid: 6be65f35063d21749a301ead174f8452, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Me perd\xED de todo\u2026"
+      next:
+        sceneId: act1_presentacion
+        nodeId: presentacion_07
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: presentacion_07
+      speaker: {fileID: 11400000, guid: 744ec87fa570be14d8cb7af3caf450f6, type: 2}
+      background: {fileID: 11400000, guid: 6be65f35063d21749a301ead174f8452, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Tienes a una persona sentada al lado tuyo, parece que s\xED estuvo atenta
+        a la charla y podr\xEDa ayudarte a ponerte al d\xEDa."
+      next:
+        sceneId: act1_presentacion
+        nodeId: 
+      choices:
+      - choiceId: "Presentarse y preguntar qu\xE9 se habl\xF3 en la charla"
+        text: "Presentarse y preguntar qu\xE9 se habl\xF3 en la charla"
+        destination:
+          sceneId: vozalta
+          nodeId: vozalta_01
+      - choiceId: Hablar en voz baja
+        text: Hablar en voz baja
+        destination:
+          sceneId: vozbaja
+          nodeId: vozbaja_01
+      - choiceId: Pasar la oportunidad
+        text: Pasar la oportunidad
+        destination:
+          sceneId: pasar
+          nodeId: pasar_01
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+  - sceneId: vozalta
+    sceneName: vozalta
+    music: {fileID: 0}
+    dialogueNodes:
+    - nodeId: vozalta_01
+      speaker: {fileID: 11400000, guid: 744ec87fa570be14d8cb7af3caf450f6, type: 2}
+      background: {fileID: 11400000, guid: 6be65f35063d21749a301ead174f8452, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Disculpa, \xBFpudiste escuchar algo de lo que dijeron?"
+      next:
+        sceneId: vozalta
+        nodeId: vozalta_02
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: vozalta_02
+      speaker: {fileID: 11400000, guid: 176ac1574d4d5c746a2b3db76b152179, type: 2}
+      background: {fileID: 11400000, guid: 6be65f35063d21749a301ead174f8452, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Oh, \xA1si!, hablaron un poco sobre los logros de la universidad, sobre
+        tener metas, apuntar hacia la excelencia e inscribirnos a una app sobre salud."
+      next:
+        sceneId: vozalta
+        nodeId: vozalta_03
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: vozalta_03
+      speaker: {fileID: 11400000, guid: 744ec87fa570be14d8cb7af3caf450f6, type: 2}
+      background: {fileID: 11400000, guid: 6be65f35063d21749a301ead174f8452, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Aaaaah bueno, \xA1muchas gracias! Me llamo Vincent por cierto."
+      next:
+        sceneId: vozalta
+        nodeId: vozalta_04
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: vozalta_04
+      speaker: {fileID: 11400000, guid: 176ac1574d4d5c746a2b3db76b152179, type: 2}
+      background: {fileID: 11400000, guid: 6be65f35063d21749a301ead174f8452, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Hola, amiguito, soy Mar\xEDa."
+      next:
+        sceneId: vozalta
+        nodeId: vozalta_05
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: vozalta_05
+      speaker: {fileID: 11400000, guid: 744ec87fa570be14d8cb7af3caf450f6, type: 2}
+      background: {fileID: 11400000, guid: 6be65f35063d21749a301ead174f8452, type: 2}
+      soundEffect: {fileID: 0}
+      text: "\xBFEn qu\xE9 carrera est\xE1s, Mar\xEDa?"
+      next:
+        sceneId: vozalta
+        nodeId: vozalta_06
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: vozalta_06
+      speaker: {fileID: 11400000, guid: 176ac1574d4d5c746a2b3db76b152179, type: 2}
+      background: {fileID: 11400000, guid: 6be65f35063d21749a301ead174f8452, type: 2}
+      soundEffect: {fileID: 0}
+      text: Soy de compu, junto a mis amigos.
+      next:
+        sceneId: vozalta
+        nodeId: vozalta_07
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: vozalta_07
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: 6be65f35063d21749a301ead174f8452, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Mar\xEDa se\xF1ala a los asientos al lado suyo, sus amigos te hacen
+        un breve gesto de saludo."
+      next:
+        sceneId: vozalta
+        nodeId: vozalta_08
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: vozalta_08
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: 6be65f35063d21749a301ead174f8452, type: 2}
+      soundEffect: {fileID: 0}
+      text: "T\xFA les devuelves el gesto por respeto."
+      next:
+        sceneId: vozalta
+        nodeId: vozalta_09
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: vozalta_09
+      speaker: {fileID: 11400000, guid: 744ec87fa570be14d8cb7af3caf450f6, type: 2}
+      background: {fileID: 11400000, guid: 6be65f35063d21749a301ead174f8452, type: 2}
+      soundEffect: {fileID: 0}
+      text: Wow, yo soy de compu.
+      next:
+        sceneId: vozalta
+        nodeId: vozalta_10
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: vozalta_10
+      speaker: {fileID: 11400000, guid: 176ac1574d4d5c746a2b3db76b152179, type: 2}
+      background: {fileID: 11400000, guid: 6be65f35063d21749a301ead174f8452, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Uuuu, seguro compartimos un par de clases, quiz\xE1 nos encontremos
+        por ah\xED."
+      next:
+        sceneId: vozalta
+        nodeId: vozalta_11
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: vozalta_11
+      speaker: {fileID: 11400000, guid: 744ec87fa570be14d8cb7af3caf450f6, type: 2}
+      background: {fileID: 11400000, guid: 6be65f35063d21749a301ead174f8452, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Es probable que as\xED sea, muchas gracias de nuevo por la informaci\xF3n."
+      next:
+        sceneId: vozalta
+        nodeId: vozalta_12
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: vozalta_12
+      speaker: {fileID: 11400000, guid: 744ec87fa570be14d8cb7af3caf450f6, type: 2}
+      background: {fileID: 11400000, guid: 6be65f35063d21749a301ead174f8452, type: 2}
+      soundEffect: {fileID: 0}
+      text: Dale, no hay problema.
+      next:
+        sceneId: vozalta
+        nodeId: vozalta_13
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: vozalta_13
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: 6be65f35063d21749a301ead174f8452, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Al terminar la charla, te levantas de tu asiento y miras a lo lejos
+        una botarga de un drag\xF3n verde."
+      next:
+        sceneId: vozalta
+        nodeId: vozalta_14
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 1
+    - nodeId: vozalta_14
+      speaker: {fileID: 11400000, guid: ad1147b15306a78419a48d58587bc0dd, type: 2}
+      background: {fileID: 11400000, guid: 6be65f35063d21749a301ead174f8452, type: 2}
+      soundEffect: {fileID: 0}
+      text: 
+      next:
+        sceneId: vozalta
+        nodeId: vozalta_15
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: vozalta_15
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: 6be65f35063d21749a301ead174f8452, type: 2}
+      soundEffect: {fileID: 0}
+      text: "BROOO, ESE ES JACK?? Necesito una foto con \xE9l!"
+      next:
+        sceneId: vozalta
+        nodeId: vozalta_16
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: vozalta_16
+      speaker: {fileID: 11400000, guid: 744ec87fa570be14d8cb7af3caf450f6, type: 2}
+      background: {fileID: 11400000, guid: 6be65f35063d21749a301ead174f8452, type: 2}
+      soundEffect: {fileID: 0}
+      text: "\xBFNos sacamos una foto?"
+      next:
+        sceneId: vozalta
+        nodeId: vozalta_17
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: vozalta_17
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: 6be65f35063d21749a301ead174f8452, type: 2}
+      soundEffect: {fileID: 0}
+      text: La botarga levanta el pulgar y da el visto bueno.
+      next:
+        sceneId: vozalta
+        nodeId: vozalta_18
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: vozalta_18
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: 6be65f35063d21749a301ead174f8452, type: 2}
+      soundEffect: {fileID: 0}
+      text: "De esta manera, tu d\xEDa tuvo un gran final, quiz\xE1 no conociste
+        a muchas personas, pero tu confianza te ayud\xF3 a poder conocer m\xE1s gente
+        y tener una foto que no se repetir\xE1."
+      next:
+        sceneId: act2_clase
+        nodeId: act2_01
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 1
+  - sceneId: vozbaja
+    sceneName: vozbaja
+    music: {fileID: 0}
+    dialogueNodes:
+    - nodeId: vozbaja_01
+      speaker: {fileID: 11400000, guid: 744ec87fa570be14d8cb7af3caf450f6, type: 2}
+      background: {fileID: 11400000, guid: 6be65f35063d21749a301ead174f8452, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Hola\u2026 \xBFescuchaste algo?"
+      next:
+        sceneId: vozbaja
+        nodeId: vozbaja_02
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: vozbaja_02
+      speaker: {fileID: 11400000, guid: 176ac1574d4d5c746a2b3db76b152179, type: 2}
+      background: {fileID: 11400000, guid: 6be65f35063d21749a301ead174f8452, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Oh, \xBFdijiste algo?"
+      next:
+        sceneId: vozbaja
+        nodeId: vozbaja_03
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: vozbaja_03
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: 6be65f35063d21749a301ead174f8452, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Sientes algo de verg\xFCenza, pero al menos pudiste entablar una pl\xE1tica."
+      next:
+        sceneId: vozbaja
+        nodeId: vozbaja_04
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: vozbaja_04
+      speaker: {fileID: 11400000, guid: 744ec87fa570be14d8cb7af3caf450f6, type: 2}
+      background: {fileID: 11400000, guid: 6be65f35063d21749a301ead174f8452, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Perdona, \xBFpusiste atenci\xF3n a lo que dijeron?"
+      next:
+        sceneId: vozbaja
+        nodeId: vozbaja_05
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: vozbaja_05
+      speaker: {fileID: 11400000, guid: 176ac1574d4d5c746a2b3db76b152179, type: 2}
+      background: {fileID: 11400000, guid: 6be65f35063d21749a301ead174f8452, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Oh, \xA1s\xED! Hablaron un poco sobre los logros de la universidad,
+        sobre tener metas, apuntar hacia la excelencia e inscribirnos a una app sobre
+        salud."
+      next:
+        sceneId: vozbaja
+        nodeId: vozbaja_06
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: vozbaja_06
+      speaker: {fileID: 11400000, guid: 744ec87fa570be14d8cb7af3caf450f6, type: 2}
+      background: {fileID: 11400000, guid: 6be65f35063d21749a301ead174f8452, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Aaaaah bueno, \xA1muchas gracias! Me llamo Vincent por cierto."
+      next:
+        sceneId: vozbaja
+        nodeId: vozbaja_07
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: vozbaja_07
+      speaker: {fileID: 11400000, guid: 176ac1574d4d5c746a2b3db76b152179, type: 2}
+      background: {fileID: 11400000, guid: 6be65f35063d21749a301ead174f8452, type: 2}
+      soundEffect: {fileID: 0}
+      text: "\xA1Un gusto! Yo soy Mar\xEDa. No te preocupes por el ruido, le pasa
+        a un amigo seguidamente."
+      next:
+        sceneId: vozbaja
+        nodeId: vozbaja_08
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: vozbaja_08
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: 6be65f35063d21749a301ead174f8452, type: 2}
+      soundEffect: {fileID: 0}
+      text: "La conversaci\xF3n no empez\xF3 de la mejor manera, pero lograste conocer
+        a alguien nuevo."
+      next:
+        sceneId: act2_clase
+        nodeId: act2_01
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+  - sceneId: pasar
+    sceneName: pasar
+    music: {fileID: 8300000, guid: dfcfe208c5729584aa32c0c4f03fa552, type: 3}
+    dialogueNodes:
+    - nodeId: pasar_01
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: 6be65f35063d21749a301ead174f8452, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Te sientes seguro que la informaci\xF3n dada en la charla no fue lo
+        suficientemente importante para preguntar, as\xED que seguiste con tu d\xEDa
+        normal."
+      next:
+        sceneId: pasar
+        nodeId: pasar_02
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: pasar_02
+      speaker: {fileID: 11400000, guid: 744ec87fa570be14d8cb7af3caf450f6, type: 2}
+      background: {fileID: 11400000, guid: 6be65f35063d21749a301ead174f8452, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Bueno, esa fue una buena siesta. Ahora\u2026 deber\xEDa ir a ver qu\xE9
+        puedo hacer."
+      next:
+        sceneId: pasar
+        nodeId: pasar_03
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: pasar_03
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: eec78088c5f60aa4dbbb49bb74701594, type: 2}
+      soundEffect: {fileID: 0}
+      text: Pasas junto a varios stands y te distraes viendo todo lo que ofrecen.
+      next:
+        sceneId: pasar
+        nodeId: pasar_04
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: pasar_04
+      speaker: {fileID: 11400000, guid: 2aad3ff1f08f1e74b8697fb245dce469, type: 2}
+      background: {fileID: 11400000, guid: eec78088c5f60aa4dbbb49bb74701594, type: 2}
+      soundEffect: {fileID: 0}
+      text: "\xA1Oye! \xBFQuieres formar parte de alg\xFAn club?"
+      next:
+        sceneId: pasar
+        nodeId: pasar_05
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: pasar_05
+      speaker: {fileID: 11400000, guid: 744ec87fa570be14d8cb7af3caf450f6, type: 2}
+      background: {fileID: 11400000, guid: eec78088c5f60aa4dbbb49bb74701594, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Hmmm, quiz\xE1 deber\xEDa\u2014"
+      next:
+        sceneId: pasar
+        nodeId: pasar_06
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: pasar_06
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: fdc7a3799b2f4ad4b9434c5fe96fd4e5, type: 2}
+      soundEffect: {fileID: 8300000, guid: 8585278a966143b40a9cb6e1a6a02715, type: 3}
+      text: '*CRASH!!!*'
+      next:
+        sceneId: pasar
+        nodeId: pasar_07
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: pasar_07
+      speaker: {fileID: 11400000, guid: 744ec87fa570be14d8cb7af3caf450f6, type: 2}
+      background: {fileID: 11400000, guid: 6be65f35063d21749a301ead174f8452, type: 2}
+      soundEffect: {fileID: 0}
+      text: AHHH!!! Oh... solo fue un suenio. Ehm...
+      next:
+        sceneId: act1_presentacion
+        nodeId: presentacion_07
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+  - sceneId: act1_cafeteria
+    sceneName: Cafeteria
+    music: {fileID: 0}
+    dialogueNodes:
+    - nodeId: cafe_01
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: eec78088c5f60aa4dbbb49bb74701594, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Decides ir a la cafeter\xEDa, que para sorpresa de nadie est\xE1 repleta
+        de estudiantes queriendo saciar su sed de hambre y estr\xE9s estudiantil."
+      next:
+        sceneId: act1_cafeteria
+        nodeId: cafe_02
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: cafe_02
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: 411509c5fc0617a44b698ab8b19934eb, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Decides acercarte un poco a las mesas, miras que todos est\xE1n hablando,
+        comiendo una galleta de Gitane o contando que hicieron en vacaciones."
+      next:
+        sceneId: act1_cafeteria
+        nodeId: cafe_03
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: cafe_03
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: 411509c5fc0617a44b698ab8b19934eb, type: 2}
+      soundEffect: {fileID: 0}
+      text: "En eso, miras que una gran cantidad de estudiantes hablan sobre ser
+        influencers, bandas o formar parte de alg\xFAn club, la idea no suena nada
+        mal y se queda en tu cabeza."
+      next:
+        sceneId: act1_cafeteria
+        nodeId: cafe_04
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: cafe_04
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: 411509c5fc0617a44b698ab8b19934eb, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Contin\xFAas caminando, pero el lugar realmente est\xE1 repleto de gente."
+      next:
+        sceneId: act1_cafeteria
+        nodeId: cafe_05
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: cafe_05
+      speaker: {fileID: 11400000, guid: 744ec87fa570be14d8cb7af3caf450f6, type: 2}
+      background: {fileID: 11400000, guid: 411509c5fc0617a44b698ab8b19934eb, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Oh\u2026 creo que no va a haber espacio por aqu\xED, aunque si vi un
+        par de cosas interesantes."
+      next:
+        sceneId: act1_cafeteria
+        nodeId: cafe_06
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: cafe_06
+      speaker: {fileID: 11400000, guid: 744ec87fa570be14d8cb7af3caf450f6, type: 2}
+      background: {fileID: 11400000, guid: 411509c5fc0617a44b698ab8b19934eb, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Quiz\xE1 deber\xEDa plantearme un par de metas o cosas que hacer para
+        m\xED mismo. Despu\xE9s de todo, esta es una fase nueva\u2026"
+      next:
+        sceneId: act1_cafeteria
+        nodeId: cafe_07
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: cafe_07
+      speaker: {fileID: 11400000, guid: 744ec87fa570be14d8cb7af3caf450f6, type: 2}
+      background: {fileID: 11400000, guid: 411509c5fc0617a44b698ab8b19934eb, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Pero esta fase no me dar\xE1 un lugar donde sentarme. Quiz\xE1 si regreso
+        pueda encontrar un lugar a donde ir."
+      next:
+        sceneId: act1_cafeteria
+        nodeId: cafe_08
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: cafe_08
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: 411509c5fc0617a44b698ab8b19934eb, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Antes de irte a sentar, decides comprar un panito del d\xEDa para quitarte
+        el antojo."
+      next:
+        sceneId: act1_intro
+        nodeId: intro_02
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+  - sceneId: act2_clase
+    sceneName: Clase
+    music: {fileID: 0}
+    dialogueNodes:
+    - nodeId: act2_01
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: eec78088c5f60aa4dbbb49bb74701594, type: 2}
+      soundEffect: {fileID: 0}
+      text: Luego de un breve fin de semana, es momento de comenzar tus clases.
+      next:
+        sceneId: act2_clase
+        nodeId: act2_02
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: act2_02
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: eec78088c5f60aa4dbbb49bb74701594, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Revisas tu horario y parece que comienza tu clase de programaci\xF3n."
+      next:
+        sceneId: act2_clase
+        nodeId: act2_03
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: act2_03
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: eec78088c5f60aa4dbbb49bb74701594, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Llegas al CIT, pero todav\xEDa no entiendes muy bien c\xF3mo funcionan
+        los n\xFAmeros de sal\xF3n, \xBFque decides hacer?"
+      next:
+        sceneId: act2_clase
+        nodeId: 
+      choices:
+      - choiceId: Tomar Ascensor
+        text: Tomar Ascensor
+        destination:
+          sceneId: act2_ascensor
+          nodeId: ascensor_01
+      - choiceId: Tomar Escaleras
+        text: Tomar Escaleras
+        destination:
+          sceneId: act2_escaleras
+          nodeId: escaleras_01
+      - choiceId: Saltar Clase
+        text: Saltar Clase
+        destination:
+          sceneId: act2_saltar
+          nodeId: saltar_01
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+  - sceneId: act2_ascensor
+    sceneName: Ascensor
+    music: {fileID: 0}
+    dialogueNodes:
+    - nodeId: ascensor_01
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: eec78088c5f60aa4dbbb49bb74701594, type: 2}
+      soundEffect: {fileID: 0}
+      text: Decides tomar el ascensor.
+      next:
+        sceneId: act2_ascensor
+        nodeId: ascensor_02
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: ascensor_02
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: c2d529e6e69982c4ca1f605462d8b4a7, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Tras unos minutos de confusi\xF3n con los n\xFAmeros, finalmente encuentras
+        el sal\xF3n."
+      next:
+        sceneId: act3_clase
+        nodeId: clase3_01
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+  - sceneId: act2_escaleras
+    sceneName: Escaleras
+    music: {fileID: 0}
+    dialogueNodes:
+    - nodeId: escaleras_01
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: eec78088c5f60aa4dbbb49bb74701594, type: 2}
+      soundEffect: {fileID: 0}
+      text: Decides ir por las escaleras.
+      next:
+        sceneId: act2_escaleras
+        nodeId: escaleras_02
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: escaleras_02
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: c2d529e6e69982c4ca1f605462d8b4a7, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Despu\xE9s de subir un par de pisos y revisar nuevamente el n\xFAmero
+        del sal\xF3n, finalmente encuentras tu clase."
+      next:
+        sceneId: act3_clase
+        nodeId: clase3_01
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+  - sceneId: act2_saltar
+    sceneName: Saltar
+    music: {fileID: 0}
+    dialogueNodes:
+    - nodeId: saltar_01
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: c2d529e6e69982c4ca1f605462d8b4a7, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Ves el sal\xF3n, pero todav\xEDa falta un poco para que comience la
+        clase. Despu\xE9s de todo, acabas de empezar la universidad\u2026 \xBFrealmente
+        pasa algo si faltas a la primera?"
+      next:
+        sceneId: act2_saltar
+        nodeId: saltar_02
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: saltar_02
+      speaker: {fileID: 11400000, guid: 744ec87fa570be14d8cb7af3caf450f6, type: 2}
+      background: {fileID: 11400000, guid: eec78088c5f60aa4dbbb49bb74701594, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Una clase no puede ser tan importante. Adem\xE1s, podr\xEDa aprovechar
+        este tiempo para conocer un poco m\xE1s el campus."
+      next:
+        sceneId: act2_saltar
+        nodeId: saltar_03
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: saltar_03
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: eec78088c5f60aa4dbbb49bb74701594, type: 2}
+      soundEffect: {fileID: 0}
+      text: Decides no entrar y aprovechas para recorrer el lugar por tu cuenta.
+      next:
+        sceneId: act2_saltar
+        nodeId: saltar_04
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: saltar_04
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: eec78088c5f60aa4dbbb49bb74701594, type: 2}
+      soundEffect: {fileID: 0}
+      text: Ves estudiantes conversando entre ellos mientras se preparan para comenzar
+        el ciclo.
+      next:
+        sceneId: act2_saltar
+        nodeId: saltar_05
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: saltar_05
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: eec78088c5f60aa4dbbb49bb74701594, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Un rato despu\xE9s, revisas la hora y te das cuenta de que la clase
+        ya termin\xF3."
+      next:
+        sceneId: act2_saltar
+        nodeId: saltar_06
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: saltar_06
+      speaker: {fileID: 11400000, guid: 744ec87fa570be14d8cb7af3caf450f6, type: 2}
+      background: {fileID: 11400000, guid: eec78088c5f60aa4dbbb49bb74701594, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Bueno\u2026 supongo que ya no hay vuelta atr\xE1s."
+      next:
+        sceneId: act2_saltar
+        nodeId: saltar_07
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: saltar_07
+      speaker: {fileID: 11400000, guid: 744ec87fa570be14d8cb7af3caf450f6, type: 2}
+      background: {fileID: 11400000, guid: eec78088c5f60aa4dbbb49bb74701594, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Contin\xFAas con tu d\xEDa, aunque ahora eres uno de los pocos estudiantes
+        que todav\xEDa no sabe c\xF3mo ser\xE1 la clase o con qui\xE9n tendr\xE1
+        que trabajar."
+      next:
+        sceneId: act2_saltar
+        nodeId: saltar_08
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: saltar_08
+      speaker: {fileID: 11400000, guid: 744ec87fa570be14d8cb7af3caf450f6, type: 2}
+      background: {fileID: 11400000, guid: eec78088c5f60aa4dbbb49bb74701594, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Contin\xFAas con tu d\xEDa, aunque ahora eres uno de los pocos estudiantes
+        que todav\xEDa no sabe c\xF3mo ser\xE1 la clase o con qui\xE9n tendr\xE1
+        que trabajar."
+      next:
+        sceneId: act2_saltar
+        nodeId: saltar_09
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: saltar_09
+      speaker: {fileID: 11400000, guid: 744ec87fa570be14d8cb7af3caf450f6, type: 2}
+      background: {fileID: 11400000, guid: eec78088c5f60aa4dbbb49bb74701594, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Quiz\xE1 faltar no haya sido la mejor manera de comenzar."
+      next:
+        sceneId: act3_clase
+        nodeId: clase3_alt_01
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+  - sceneId: act3_clase
+    sceneName: Clase
+    music: {fileID: 0}
+    dialogueNodes:
+    - nodeId: clase3_alt_01
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: c2d529e6e69982c4ca1f605462d8b4a7, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Finalmente llegas a tu clase de programaci\xF3n. Al parecer todos ya
+        conocen al catedr\xE1tico y t\xFA eres de los pocos que no sabe muy bien
+        qu\xE9 esperar."
+      next:
+        sceneId: act3_clase
+        nodeId: clase3_02
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: clase3_01
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: c2d529e6e69982c4ca1f605462d8b4a7, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Finalmente llegas a tu clase de programaci\xF3n."
+      next:
+        sceneId: act3_clase
+        nodeId: clase3_02
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: clase3_02
+      speaker: {fileID: 11400000, guid: cd2d21730572249448e34e7370cdeb6b, type: 2}
+      background: {fileID: 11400000, guid: c2d529e6e69982c4ca1f605462d8b4a7, type: 2}
+      soundEffect: {fileID: 0}
+      text: Bueno chicos, comencemos con la clase. Por si no vinieron o no se acuerdan,
+        me presento...
+      next:
+        sceneId: act3_clase
+        nodeId: clase3_03
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: clase3_03
+      speaker: {fileID: 11400000, guid: cd2d21730572249448e34e7370cdeb6b, type: 2}
+      background: {fileID: 11400000, guid: c2d529e6e69982c4ca1f605462d8b4a7, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Soy Leo y ser\xE9 su catedr\xE1tico de programaci\xF3n durante este
+        primer ciclo."
+      next:
+        sceneId: act3_clase
+        nodeId: clase3_04
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: clase3_04
+      speaker: {fileID: 11400000, guid: cd2d21730572249448e34e7370cdeb6b, type: 2}
+      background: {fileID: 11400000, guid: c2d529e6e69982c4ca1f605462d8b4a7, type: 2}
+      soundEffect: {fileID: 0}
+      text: Vamos a ver distintos temas sobre Python y todo lo que conlleva, pero
+        antes veamos las noticias de la semana.
+      next:
+        sceneId: act3_clase
+        nodeId: clase3_05
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: clase3_05
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 0}
+      soundEffect: {fileID: 0}
+      text: "De esta manera, la clase contin\xFAa con normalidad. Haces peque\xF1os
+        comentarios con tus compa\xF1eros y sigues poniendo atenci\xF3n, hasta que
+        el profe realiza una din\xE1mica."
+      next:
+        sceneId: act3_clase
+        nodeId: clase3_06
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 1
+      hideRightCharacter: 0
+    - nodeId: clase3_06
+      speaker: {fileID: 11400000, guid: cd2d21730572249448e34e7370cdeb6b, type: 2}
+      background: {fileID: 0}
+      soundEffect: {fileID: 0}
+      text: Muy bien, ahora quiero que hagan grupos de 3.
+      next:
+        sceneId: act3_clase
+        nodeId: clase3_07
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: clase3_07
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 0}
+      soundEffect: {fileID: 0}
+      text: Miras alrededor, decides ir y hacer equipo con...
+      next:
+        sceneId: 
+        nodeId: 
+      choices:
+      - choiceId: Camila y Fer
+        text: Camila y Fer
+        destination:
+          sceneId: act3_camfer
+          nodeId: camfer_01
+      - choiceId: "Mar\xEDa y Bran"
+        text: "Mar\xEDa y Bran"
+        destination:
+          sceneId: act3_maribran
+          nodeId: maribran_01
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+  - sceneId: act3_camfer
+    sceneName: CamilaFer
+    music: {fileID: 0}
+    dialogueNodes:
+    - nodeId: camfer_01
+      speaker: {fileID: 11400000, guid: 1703848a11e650b4c83d6c422cc5a1cb, type: 2}
+      background: {fileID: 11400000, guid: c2d529e6e69982c4ca1f605462d8b4a7, type: 2}
+      soundEffect: {fileID: 0}
+      text: Bienvenido al equipo.
+      next:
+        sceneId: act3_camfer
+        nodeId: camfer_02
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: camfer_02
+      speaker: {fileID: 11400000, guid: 3b3ddc2656ab59b41b984c8ddf164a16, type: 2}
+      background: {fileID: 0}
+      soundEffect: {fileID: 0}
+      text: "\xBFQu\xE9 onda, bro, listo para ganar?"
+      next:
+        sceneId: act3_camfer
+        nodeId: camfer_03
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: camfer_03
+      speaker: {fileID: 11400000, guid: cd2d21730572249448e34e7370cdeb6b, type: 2}
+      background: {fileID: 0}
+      soundEffect: {fileID: 0}
+      text: "Bueno muchachos, hagan un peque\xF1o c\xF3digo para repasar sus presaberes.
+        Solo necesitan crear una variable e imprimirla."
+      next:
+        sceneId: act3_camfer
+        nodeId: camfer_04
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 1
+    - nodeId: camfer_04
+      speaker: {fileID: 11400000, guid: 3b3ddc2656ab59b41b984c8ddf164a16, type: 2}
+      background: {fileID: 0}
+      soundEffect: {fileID: 0}
+      text: "\xC9l es de compu, probablemente s\xED sepa."
+      next:
+        sceneId: act3_camfer
+        nodeId: camfer_05
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 1
+      hideRightCharacter: 0
+    - nodeId: camfer_05
+      speaker: {fileID: 11400000, guid: 744ec87fa570be14d8cb7af3caf450f6, type: 2}
+      background: {fileID: 0}
+      soundEffect: {fileID: 0}
+      text: ...
+      next:
+        sceneId: 
+        nodeId: 
+      choices:
+      - choiceId: Claro.
+        text: Por algo estoy en esta carrera.
+        destination:
+          sceneId: act3_camfer
+          nodeId: camfer_claro
+      - choiceId: No.
+        text: "No estoy muy seguro, apenas estoy aprendiendo lo b\xE1sico."
+        destination:
+          sceneId: act3_camfer
+          nodeId: camfer_no
+      speakerSide: 0
+      hideLeftCharacter: 1
+      hideRightCharacter: 1
+    - nodeId: camfer_claro
+      speaker: {fileID: 11400000, guid: 3b3ddc2656ab59b41b984c8ddf164a16, type: 2}
+      background: {fileID: 0}
+      soundEffect: {fileID: 0}
+      text: "As\xED se habla."
+      next:
+        sceneId: act3_camfer
+        nodeId: camfer_06
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: camfer_no
+      speaker: {fileID: 11400000, guid: 1703848a11e650b4c83d6c422cc5a1cb, type: 2}
+      background: {fileID: 0}
+      soundEffect: {fileID: 0}
+      text: "No te preocupes, nosotros tambi\xE9n estamos aprendiendo."
+      next:
+        sceneId: act3_camfer
+        nodeId: camfer_06
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: camfer_06
+      speaker: {fileID: 11400000, guid: 3b3ddc2656ab59b41b984c8ddf164a16, type: 2}
+      background: {fileID: 0}
+      soundEffect: {fileID: 0}
+      text: "Bueno, \xBFc\xF3mo hacemos la variable?"
+      next:
+        sceneId: act3_camfer
+        nodeId: camfer_07
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: camfer_07
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 0}
+      soundEffect: {fileID: 0}
+      text: Trastean juntos, y tras algunos intentos fallidos y muchas risas, logran
+        hacerlo correctamente.
+      next:
+        sceneId: act3_camfer
+        nodeId: camfer_08
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: camfer_08
+      speaker: {fileID: 11400000, guid: 1703848a11e650b4c83d6c422cc5a1cb, type: 2}
+      background: {fileID: 0}
+      soundEffect: {fileID: 0}
+      text: "\xA1Listo!"
+      next:
+        sceneId: act3_camfer
+        nodeId: camfer_09
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: camfer_09
+      speaker: {fileID: 11400000, guid: 3b3ddc2656ab59b41b984c8ddf164a16, type: 2}
+      background: {fileID: 0}
+      soundEffect: {fileID: 0}
+      text: "Muy bien equipo, sab\xEDa que pod\xEDa confiar en nosotros."
+      next:
+        sceneId: act3_camfer
+        nodeId: camfer_10
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: camfer_10
+      speaker: {fileID: 11400000, guid: 1703848a11e650b4c83d6c422cc5a1cb, type: 2}
+      background: {fileID: 0}
+      soundEffect: {fileID: 0}
+      text: Y yo de... no hiciste nada.
+      next:
+        sceneId: act3_camfer
+        nodeId: camfer_11
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: camfer_11
+      speaker: {fileID: 11400000, guid: 3b3ddc2656ab59b41b984c8ddf164a16, type: 2}
+      background: {fileID: 0}
+      soundEffect: {fileID: 0}
+      text: Fui el apoyo moral.
+      next:
+        sceneId: act3_camfer
+        nodeId: camfer_12
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: camfer_12
+      speaker: {fileID: 11400000, guid: cd2d21730572249448e34e7370cdeb6b, type: 2}
+      background: {fileID: 0}
+      soundEffect: {fileID: 0}
+      text: Los que terminen ya pueden retirarse.
+      next:
+        sceneId: act3_camfer
+        nodeId: camfer_13
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 1
+    - nodeId: camfer_13
+      speaker: {fileID: 11400000, guid: 744ec87fa570be14d8cb7af3caf450f6, type: 2}
+      background: {fileID: 0}
+      soundEffect: {fileID: 0}
+      text: Bueno, ya fue, fue un gusto trabajar juntos.
+      next:
+        sceneId: act3_camfer
+        nodeId: camfer_14
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 1
+      hideRightCharacter: 1
+    - nodeId: camfer_14
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 0}
+      soundEffect: {fileID: 0}
+      text: "De esta manera concluy\xF3 tu clase de programaci\xF3n, nada mal para
+        ser la primera. Lo hiciste muy bien."
+      next:
+        sceneId: gameover
+        nodeId: gameover_01
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 1
+      hideRightCharacter: 1
+  - sceneId: act3_maribran
+    sceneName: MariaBran
+    music: {fileID: 0}
+    dialogueNodes:
+    - nodeId: maribran_01
+      speaker: {fileID: 11400000, guid: 176ac1574d4d5c746a2b3db76b152179, type: 2}
+      background: {fileID: 11400000, guid: c2d529e6e69982c4ca1f605462d8b4a7, type: 2}
+      soundEffect: {fileID: 0}
+      text: Bueno Vincent, te quiero vivo.
+      next:
+        sceneId: act3_maribran
+        nodeId: maribran_02
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: maribran_02
+      speaker: {fileID: 11400000, guid: 50b0327d1a4ecf84c823efef62abb3bf, type: 2}
+      background: {fileID: 11400000, guid: c2d529e6e69982c4ca1f605462d8b4a7, type: 2}
+      soundEffect: {fileID: 0}
+      text: Todos estamos listos para esto.
+      next:
+        sceneId: act3_maribran
+        nodeId: maribran_03
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: maribran_03
+      speaker: {fileID: 11400000, guid: 176ac1574d4d5c746a2b3db76b152179, type: 2}
+      background: {fileID: 11400000, guid: c2d529e6e69982c4ca1f605462d8b4a7, type: 2}
+      soundEffect: {fileID: 0}
+      text: "\xBFA poco sabes tanto, Bran?"
+      next:
+        sceneId: act3_maribran
+        nodeId: maribran_04
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: maribran_04
+      speaker: {fileID: 11400000, guid: 50b0327d1a4ecf84c823efef62abb3bf, type: 2}
+      background: {fileID: 11400000, guid: c2d529e6e69982c4ca1f605462d8b4a7, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Pues llev\xE9 algo en el colegio, ha de ser parecido. Por algo me llaman
+        Big D."
+      next:
+        sceneId: act3_maribran
+        nodeId: maribran_05
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: maribran_05
+      speaker: {fileID: 11400000, guid: cd2d21730572249448e34e7370cdeb6b, type: 2}
+      background: {fileID: 11400000, guid: c2d529e6e69982c4ca1f605462d8b4a7, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Bueno muchachos, necesito que hagan un peque\xF1o c\xF3digo para repasar
+        sus presaberes. Solo necesitan crear una variable e imprimirla."
+      next:
+        sceneId: act3_maribran
+        nodeId: maribran_06
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 1
+    - nodeId: maribran_06
+      speaker: {fileID: 11400000, guid: 176ac1574d4d5c746a2b3db76b152179, type: 2}
+      background: {fileID: 11400000, guid: c2d529e6e69982c4ca1f605462d8b4a7, type: 2}
+      soundEffect: {fileID: 0}
+      text: "\xBFY t\xFA c\xF3mo lo miras, Vincent?"
+      next:
+        sceneId: 
+        nodeId: 
+      choices:
+      - choiceId: ggez
+        text: "Claro que est\xE1 regalado."
+        destination:
+          sceneId: act3_maribran
+          nodeId: maribran_ok
+      - choiceId: no
+        text: "Todav\xEDa no s\xE9 mucho del tema, sinceramente."
+        destination:
+          sceneId: act3_maribran
+          nodeId: maribran_no
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: maribran_ok
+      speaker: {fileID: 11400000, guid: 50b0327d1a4ecf84c823efef62abb3bf, type: 2}
+      background: {fileID: 11400000, guid: c2d529e6e69982c4ca1f605462d8b4a7, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Te dije, hasta \xE9l lo sabe."
+      next:
+        sceneId: act3_maribran
+        nodeId: maribran_07
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: maribran_no
+      speaker: {fileID: 11400000, guid: 176ac1574d4d5c746a2b3db76b152179, type: 2}
+      background: {fileID: 11400000, guid: c2d529e6e69982c4ca1f605462d8b4a7, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Yo igual, as\xED que estamos a mano."
+      next:
+        sceneId: act3_maribran
+        nodeId: maribran_07
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: maribran_07
+      speaker: {fileID: 11400000, guid: 50b0327d1a4ecf84c823efef62abb3bf, type: 2}
+      background: {fileID: 11400000, guid: c2d529e6e69982c4ca1f605462d8b4a7, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Bueno, vamos prendiendo las compus. \xBFAlguna idea para hacer la variable?"
+      next:
+        sceneId: act3_maribran
+        nodeId: maribran_08
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: maribran_08
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: c2d529e6e69982c4ca1f605462d8b4a7, type: 2}
+      soundEffect: {fileID: 0}
+      text: Intentas algo, parece funcionar.
+      next:
+        sceneId: act3_maribran
+        nodeId: maribran_09
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: maribran_09
+      speaker: {fileID: 11400000, guid: 176ac1574d4d5c746a2b3db76b152179, type: 2}
+      background: {fileID: 11400000, guid: c2d529e6e69982c4ca1f605462d8b4a7, type: 2}
+      soundEffect: {fileID: 0}
+      text: "\xA1S\xED! Esa funciona. Ahora necesitamos imprimirla."
+      next:
+        sceneId: act3_maribran
+        nodeId: maribran_10
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: maribran_10
+      speaker: {fileID: 11400000, guid: 176ac1574d4d5c746a2b3db76b152179, type: 2}
+      background: {fileID: 11400000, guid: c2d529e6e69982c4ca1f605462d8b4a7, type: 2}
+      soundEffect: {fileID: 0}
+      text: "\xA1Terminado! Creo que eso ser\xEDa todo."
+      next:
+        sceneId: act3_maribran
+        nodeId: maribran_11
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: maribran_11
+      speaker: {fileID: 11400000, guid: 50b0327d1a4ecf84c823efef62abb3bf, type: 2}
+      background: {fileID: 11400000, guid: c2d529e6e69982c4ca1f605462d8b4a7, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Bien hecho equipo, ya me quer\xEDa ir."
+      next:
+        sceneId: act3_maribran
+        nodeId: maribran_12
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: maribran_12
+      speaker: {fileID: 11400000, guid: cd2d21730572249448e34e7370cdeb6b, type: 2}
+      background: {fileID: 11400000, guid: c2d529e6e69982c4ca1f605462d8b4a7, type: 2}
+      soundEffect: {fileID: 0}
+      text: Los que terminen ya pueden retirarse.
+      next:
+        sceneId: act3_maribran
+        nodeId: maribran_13
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 1
+    - nodeId: maribran_13
+      speaker: {fileID: 11400000, guid: 744ec87fa570be14d8cb7af3caf450f6, type: 2}
+      background: {fileID: 11400000, guid: c2d529e6e69982c4ca1f605462d8b4a7, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Yo tambi\xE9n, fue un gusto trabajar juntos."
+      next:
+        sceneId: act3_maribran
+        nodeId: maribran_14
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 1
+      hideRightCharacter: 1
+    - nodeId: maribran_14
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: c2d529e6e69982c4ca1f605462d8b4a7, type: 2}
+      soundEffect: {fileID: 0}
+      text: "De esta manera concluy\xF3 tu clase de programaci\xF3n, nada mal para
+        ser la primera. Lo hiciste muy bien."
+      next:
+        sceneId: gameover
+        nodeId: gameover_01
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+  - sceneId: gameover
+    sceneName: GameOver
+    music: {fileID: 8300000, guid: 4d03f8ed2e06386408511da10cd419b4, type: 3}
+    dialogueNodes:
+    - nodeId: gameover_01
+      speaker: {fileID: 11400000, guid: 5b2cedcd5f798f446b27e3a5ff8850b6, type: 2}
+      background: {fileID: 11400000, guid: fd938031cbd088f4ea6456e5123068c6, type: 2}
+      soundEffect: {fileID: 0}
+      text: Brooooo, como asi que no pudiste terminar el proyecto a tiempo...
+      next:
+        sceneId: gameover
+        nodeId: gameover_02
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: gameover_02
+      speaker: {fileID: 11400000, guid: 5b2cedcd5f798f446b27e3a5ff8850b6, type: 2}
+      background: {fileID: 11400000, guid: fd938031cbd088f4ea6456e5123068c6, type: 2}
+      soundEffect: {fileID: 0}
+      text: No que muy maquina, pues...
+      next:
+        sceneId: gameover
+        nodeId: gameover_03
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: gameover_03
+      speaker: {fileID: 11400000, guid: 5b2cedcd5f798f446b27e3a5ff8850b6, type: 2}
+      background: {fileID: 11400000, guid: fd938031cbd088f4ea6456e5123068c6, type: 2}
+      soundEffect: {fileID: 0}
+      text: Bueno, como bien leen, mi querido companiero se quedo dormido
+      next:
+        sceneId: gameover
+        nodeId: gameover_04
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: gameover_04
+      speaker: {fileID: 11400000, guid: 5b2cedcd5f798f446b27e3a5ff8850b6, type: 2}
+      background: {fileID: 11400000, guid: fd938031cbd088f4ea6456e5123068c6, type: 2}
+      soundEffect: {fileID: 0}
+      text: Claramente la de estudiar no se la sabe, va a sacar un su 16 en el parcial
+        de stats.
+      next:
+        sceneId: gameover
+        nodeId: gameover_05
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: gameover_05
+      speaker: {fileID: 11400000, guid: 5b2cedcd5f798f446b27e3a5ff8850b6, type: 2}
+      background: {fileID: 11400000, guid: fd938031cbd088f4ea6456e5123068c6, type: 2}
+      soundEffect: {fileID: 0}
+      text: Pero Don Tiago, porfa piense en los buenos momentos...
+      next:
+        sceneId: gameover
+        nodeId: gameover_06
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: gameover_06
+      speaker: {fileID: 11400000, guid: 5b2cedcd5f798f446b27e3a5ff8850b6, type: 2}
+      background: {fileID: 11400000, guid: fd938031cbd088f4ea6456e5123068c6, type: 2}
+      soundEffect: {fileID: 0}
+      text: En fin, si quieren volver a jugar, denle click abajo... o mejor vengan
+        por unas chelas conmigo, ya saben.
+      next:
+        sceneId: titlescreen
+        nodeId: title_01
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+  characters:
+  - {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+  - {fileID: 11400000, guid: cd2d21730572249448e34e7370cdeb6b, type: 2}
+  - {fileID: 11400000, guid: 1703848a11e650b4c83d6c422cc5a1cb, type: 2}
+  - {fileID: 11400000, guid: 3b3ddc2656ab59b41b984c8ddf164a16, type: 2}
+  - {fileID: 11400000, guid: 176ac1574d4d5c746a2b3db76b152179, type: 2}
+  - {fileID: 11400000, guid: 50b0327d1a4ecf84c823efef62abb3bf, type: 2}
+  backgrounds:
+  - {fileID: 11400000, guid: eec78088c5f60aa4dbbb49bb74701594, type: 2}

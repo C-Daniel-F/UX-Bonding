@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 6b858bdb394022a44bdf4be5a019495b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - speakerText: {instanceID: 0}
+  - dialogueText: {instanceID: 0}
+  - continueButton: {fileID: 1462703725068074681, guid: efefa497d45f1e041baa2e41b3e6ff80, type: 3}
+  - choicesContainer: {instanceID: 0}
+  - choiceButtonPrefab: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
