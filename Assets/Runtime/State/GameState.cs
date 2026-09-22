@@ -9,9 +9,6 @@ public class GameState
         new Dictionary<string, int>();
 
 
-    // =========================
-    // FLAGS
-    // =========================
 
     public void SetFlag(string flagId, bool value)
     {
@@ -48,10 +45,6 @@ public class GameState
         flags.Remove(flagId);
     }
 
-
-    // =========================
-    // RELATIONSHIPS
-    // =========================
 
     public void SetRelationship(string characterId, int value)
     {
@@ -96,10 +89,6 @@ public class GameState
         relationships[characterId] = 0;
     }
 
-
-    // =========================
-    // RESET
-    // =========================
 
     public void Clear()
     {

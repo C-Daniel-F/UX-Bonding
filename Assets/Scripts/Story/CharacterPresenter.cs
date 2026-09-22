@@ -15,9 +15,6 @@ public class CharacterPresenter : MonoBehaviour
     }
 
 
-    // =========================
-    // SHOW CHARACTER
-    // =========================
 
     public void ShowCharacter(
         Character character,
@@ -36,9 +33,6 @@ public class CharacterPresenter : MonoBehaviour
     }
 
 
-    // =========================
-    // HIDE
-    // =========================
 
     public void HideLeft()
     {
@@ -54,9 +48,6 @@ public class CharacterPresenter : MonoBehaviour
     }
 
 
-    // =========================
-    // HELPERS
-    // =========================
 
     private Image GetImage(CharacterSide side)
     {

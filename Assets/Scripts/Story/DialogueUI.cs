@@ -27,10 +27,6 @@ public class DialogueUI : MonoBehaviour
     }
 
 
-    // =========================
-    // DISPLAY NODE
-    // =========================
-
     public void ShowNode(DialogueNode node)
     {
         if (node == null)
@@ -62,19 +58,12 @@ public class DialogueUI : MonoBehaviour
     }
 
 
-    // =========================
-    // DIALOGUE
-    // =========================
 
     private void ShowDialogue(DialogueNode node)
     {
         dialogueText.text = node.Text;
     }
 
-
-    // =========================
-    // CHOICES
-    // =========================
 
     private void ShowChoices(DialogueNode node)
     {
@@ -123,9 +112,6 @@ public class DialogueUI : MonoBehaviour
     }
 
 
-    // =========================
-    // INPUT
-    // =========================
 
     private void OnContinueClicked()
     {
@@ -137,11 +123,6 @@ public class DialogueUI : MonoBehaviour
     {
         ChoiceSelected?.Invoke(choiceIndex);
     }
-
-
-    // =========================
-    // CLEAR
-    // =========================
 
     public void Clear()
     {

@@ -601,8 +601,8 @@ MonoBehaviour:
         nodeId: act2_01
       choices: []
       speakerSide: 0
-      hideLeftCharacter: 0
-      hideRightCharacter: 0
+      hideLeftCharacter: 1
+      hideRightCharacter: 1
   - sceneId: pasar
     sceneName: pasar
     music: {fileID: 8300000, guid: dfcfe208c5729584aa32c0c4f03fa552, type: 3}

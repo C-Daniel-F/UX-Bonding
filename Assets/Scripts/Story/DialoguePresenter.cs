@@ -28,10 +28,6 @@ public class DialoguePresenter : MonoBehaviour
     }
 
 
-    // =========================
-    // BIND
-    // =========================
-
     public void Bind(StoryRuntime storyRuntime)
     {
         UnbindRuntime();
@@ -68,10 +64,6 @@ public class DialoguePresenter : MonoBehaviour
         runtime = null;
     }
 
-
-    // =========================
-    // RUNTIME EVENTS
-    // =========================
 
     private void OnNodeChanged(DialogueNode node)
     {
@@ -120,11 +112,6 @@ public class DialoguePresenter : MonoBehaviour
         backgroundPresenter.Clear();
         audioPresenter.StopAll();
     }
-
-
-    // =========================
-    // UI INPUT
-    // =========================
 
     private void OnContinuePressed()
     {

@@ -53,10 +53,7 @@ public class StoryDestinationDrawer : PropertyDrawer
             EditorGUIUtility.singleLineHeight
         );
 
-        // =========================
-        // SCENE
-        // =========================
-
+        
         List<string> sceneOptions = new List<string>
         {
             "<None>"
@@ -114,13 +111,9 @@ public class StoryDestinationDrawer : PropertyDrawer
         {
             sceneId.stringValue = sceneIds[newSceneIndex];
 
-            // Changing the scene invalidates the old node.
             nodeId.stringValue = string.Empty;
         }
 
-        // =========================
-        // NODE
-        // =========================
 
         if (newSceneIndex == 0)
         {

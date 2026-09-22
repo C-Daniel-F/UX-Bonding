@@ -8,17 +8,11 @@ public class StoryRuntime
     private DialogueNode currentNode;
 
 
-    // =========================
-    // EVENTS
-    // =========================
 
     public event Action<DialogueNode> NodeChanged;
     public event Action StoryStopped;
 
 
-    // =========================
-    // CURRENT STATE
-    // =========================
 
     public Story Story => story;
     public StoryScene CurrentScene => currentScene;
@@ -32,10 +26,6 @@ public class StoryRuntime
     public bool HasChoices =>
         IsRunning && currentNode.HasChoices;
 
-
-    // =========================
-    // START
-    // =========================
 
     public void Start(Story story)
     {
@@ -69,9 +59,6 @@ public class StoryRuntime
     }
 
 
-    // =========================
-    // ADVANCE
-    // =========================
 
     public void Advance()
     {
@@ -89,9 +76,6 @@ public class StoryRuntime
     }
 
 
-    // =========================
-    // CHOICES
-    // =========================
 
     public void Choose(int choiceIndex)
     {
@@ -117,10 +101,6 @@ public class StoryRuntime
         MoveTo(choice.Destination);
     }
 
-
-    // =========================
-    // NAVIGATION
-    // =========================
 
     private void MoveTo(StoryDestination destination)
     {
@@ -196,19 +176,11 @@ public class StoryRuntime
     }
 
 
-    // =========================
-    // NOTIFICATION
-    // =========================
-
     private void NotifyNodeChanged()
     {
         NodeChanged?.Invoke(currentNode);
     }
 
-
-    // =========================
-    // STOP
-    // =========================
 
     public void Stop()
     {

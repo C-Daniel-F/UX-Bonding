@@ -19,9 +19,6 @@ public class AudioPresenter : MonoBehaviour
     }
 
 
-    // =========================
-    // SCENE MUSIC
-    // =========================
 
     public void UpdateMusic(StoryScene scene)
     {
@@ -32,14 +29,12 @@ public class AudioPresenter : MonoBehaviour
 
         AudioClip newMusic = scene.Music;
 
-        // Empty music field means:
-        // keep the current music playing.
         if (newMusic == null)
         {
             return;
         }
 
-        // Same track is already playing.
+
         if (newMusic == currentMusic &&
             musicSource.isPlaying)
         {
@@ -52,10 +47,6 @@ public class AudioPresenter : MonoBehaviour
         musicSource.Play();
     }
 
-
-    // =========================
-    // NODE SOUND EFFECT
-    // =========================
 
     public void PlaySoundEffect(AudioClip soundEffect)
     {
