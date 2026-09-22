@@ -72,3 +72,7 @@ Estos requisitos amplían el sistema y permiten manejar historias más complejas
 * Manejar estado narrativo: Registrar banderas y relaciones entre personajes para permitir futuras condiciones y consecuencias.
 * Ampliar escenarios y ramas: Incorporar nuevas escenas, personajes, fondos y decisiones sin modificar el código del sistema.
 * Mejorar presentación visual y sonora: Agregar posteriormente animaciones, expresiones, transiciones, cambios de enfoque, mezcla de audio y otros elementos de presentación.
+
+Presentación:
+https://canva.link/er6t8bpyszy55hp
+
