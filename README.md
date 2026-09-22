@@ -21,20 +21,35 @@ Repo para subir actualizaciones sobre UX Bonding
 # Clases
 
 o Story
+
 o StoryScene
+
 o DialogueNode
+
 o DialogueChoice
+
 o StoryDestination
+                
 o Character
+
 o Background
+
 o GameState
+
 o StoryRuntime
+
 o CharacterSide
+
 o DialogueUI
+
 o DialoguePresenter
+
 o CharacterPresenter
+
 o BackgroundPresenter
+
 o AudioPresenter
+
 o StoryBootstrap
 
 # Requisitos prioritarios
