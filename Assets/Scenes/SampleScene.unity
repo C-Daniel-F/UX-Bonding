@@ -875,6 +875,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speakerText: {fileID: 292969045}
   dialogueText: {fileID: 1799448848}
+  charactersPerSecond: 40
+  useUnscaledTime: 1
+  minimumWordsOnFinalPage: 4
   continueButton: {fileID: 1335138105}
   choicesContainer: {fileID: 43789550}
   choiceButtonPrefab: {fileID: 5822575121354832082, guid: 9db44d784d151ef4e9fea6390c0b2878, type: 3}
@@ -1584,10 +1587,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36.7
+  m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 20
   m_fontSizeMax: 40
   m_fontStyle: 0
