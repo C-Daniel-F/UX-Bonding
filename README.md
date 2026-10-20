@@ -73,6 +73,8 @@ Estos requisitos amplían el sistema y permiten manejar historias más complejas
 * Ampliar escenarios y ramas: Incorporar nuevas escenas, personajes, fondos y decisiones sin modificar el código del sistema.
 * Mejorar presentación visual y sonora: Agregar posteriormente animaciones, expresiones, transiciones, cambios de enfoque, mezcla de audio y otros elementos de presentación.
 
+Se updatearon opciones de los casos existentes y se añadió un caso nuevo.
+
 Presentación:
 https://canva.link/er6t8bpyszy55hp
 
