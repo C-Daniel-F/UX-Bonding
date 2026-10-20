@@ -877,7 +877,6 @@ MonoBehaviour:
   dialogueText: {fileID: 1799448848}
   charactersPerSecond: 40
   useUnscaledTime: 1
-  minimumWordsOnFinalPage: 4
   continueButton: {fileID: 1335138105}
   choicesContainer: {fileID: 43789550}
   choiceButtonPrefab: {fileID: 5822575121354832082, guid: 9db44d784d151ef4e9fea6390c0b2878, type: 3}
@@ -1605,7 +1604,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
+  m_overflowMode: 5
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1

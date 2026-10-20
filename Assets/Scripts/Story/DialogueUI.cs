@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,11 +11,8 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] private TMP_Text dialogueText;
 
     [Header("Typing")]
-    [SerializeField] private float charactersPerSecond = 40f;
+    [SerializeField, Min(1f)] private float charactersPerSecond = 40f;
     [SerializeField] private bool useUnscaledTime = true;
-
-    [Header("Pagination")]
-    [SerializeField] private int minimumWordsOnFinalPage = 3;
 
     [Header("Continue")]
     [SerializeField] private Button continueButton;
@@ -29,29 +25,35 @@ public class DialogueUI : MonoBehaviour
     public event Action<int> ChoiceSelected;
 
     private DialogueNode currentNode;
-
-    private readonly List<string> pages = new List<string>();
+    private Coroutine typingCoroutine;
 
     private int currentPage;
-
-    private Coroutine typingCoroutine;
+    private int pageCount = 1;
 
     private bool isTyping;
     private bool textFinished;
 
     private void Awake()
     {
-        continueButton.onClick.AddListener(OnContinueClicked);
+        if (continueButton != null)
+            continueButton.onClick.AddListener(OnContinueClicked);
+
+        if (dialogueText != null)
+        {
+            dialogueText.enableWordWrapping = true;
+            dialogueText.overflowMode = TextOverflowModes.Page;
+        }
+
+        if (choicesContainer != null)
+            choicesContainer.gameObject.SetActive(false);
     }
 
     private void OnDestroy()
     {
-        continueButton.onClick.RemoveListener(OnContinueClicked);
+        if (continueButton != null)
+            continueButton.onClick.RemoveListener(OnContinueClicked);
 
-        if (typingCoroutine != null)
-        {
-            StopCoroutine(typingCoroutine);
-        }
+        StopTyping();
     }
 
     public void ShowNode(DialogueNode node)
@@ -62,33 +64,28 @@ public class DialogueUI : MonoBehaviour
             return;
         }
 
+        StopTyping();
+        ClearChoices();
+
         currentNode = node;
         currentPage = 0;
-
-        if (typingCoroutine != null)
-        {
-            StopCoroutine(typingCoroutine);
-            typingCoroutine = null;
-        }
-
         isTyping = false;
         textFinished = false;
 
-        ClearChoices();
-
         ShowSpeaker(node);
-
-        BuildPages(node.Text);
-
+        PrepareDialogue(node.Text ?? string.Empty);
         ShowCurrentPage();
     }
 
     private void ShowSpeaker(DialogueNode node)
     {
+        if (speakerText == null)
+            return;
+
         if (node.Speaker == null)
         {
-            speakerText.gameObject.SetActive(false);
             speakerText.text = string.Empty;
+            speakerText.gameObject.SetActive(false);
             return;
         }
 
@@ -96,283 +93,135 @@ public class DialogueUI : MonoBehaviour
         speakerText.text = node.Speaker.DisplayName;
     }
 
-    private void BuildPages(string text)
+    private void PrepareDialogue(string text)
     {
-        pages.Clear();
-
-        if (string.IsNullOrWhiteSpace(text))
-        {
-            pages.Add(string.Empty);
-            return;
-        }
-
-        List<string> words = new List<string>(
-            text.Split(
-                new[] { ' ', '\n', '\r', '\t' },
-                StringSplitOptions.RemoveEmptyEntries
-            )
-        );
-
-        int startIndex = 0;
-
-        while (startIndex < words.Count)
-        {
-            int remainingWords =
-                words.Count - startIndex;
-
-            if (remainingWords <= minimumWordsOnFinalPage)
-            {
-                pages.Add(
-                    JoinWords(
-                        words,
-                        startIndex,
-                        words.Count
-                    )
-                );
-
-                break;
-            }
-
-            int maxFitCount =
-                FindMaximumFittingWords(
-                    words,
-                    startIndex,
-                    remainingWords
-                );
-
-            if (maxFitCount <= 0)
-            {
-                maxFitCount = 1;
-            }
-
-            int wordsAfterPage =
-                remainingWords - maxFitCount;
-
-            if (wordsAfterPage > 0 &&
-                wordsAfterPage < minimumWordsOnFinalPage)
-            {
-                int balancedCount =
-                    Mathf.CeilToInt(
-                        remainingWords / 2f
-                    );
-
-                balancedCount =
-                    Mathf.Clamp(
-                        balancedCount,
-                        1,
-                        maxFitCount
-                    );
-
-                while (balancedCount > 1 &&
-                       !FitsOnPage(
-                           JoinWords(
-                               words,
-                               startIndex,
-                               startIndex + balancedCount
-                           )
-                       ))
-                {
-                    balancedCount--;
-                }
-
-                maxFitCount = balancedCount;
-            }
-
-            pages.Add(
-                JoinWords(
-                    words,
-                    startIndex,
-                    startIndex + maxFitCount
-                )
-            );
-
-            startIndex += maxFitCount;
-        }
-
-        if (pages.Count == 0)
-        {
-            pages.Add(text.Trim());
-        }
-    }
-
-    private int FindMaximumFittingWords(
-        List<string> words,
-        int startIndex,
-        int count)
-    {
-        int low = 1;
-        int high = count;
-        int best = 0;
-
-        while (low <= high)
-        {
-            int middle =
-                (low + high) / 2;
-
-            string candidate =
-                JoinWords(
-                    words,
-                    startIndex,
-                    startIndex + middle
-                );
-
-            if (FitsOnPage(candidate))
-            {
-                best = middle;
-                low = middle + 1;
-            }
-            else
-            {
-                high = middle - 1;
-            }
-        }
-
-        return best;
-    }
-
-    private bool FitsOnPage(string text)
-    {
-        if (string.IsNullOrWhiteSpace(text))
-        {
-            return true;
-        }
-
-        dialogueText.overflowMode =
-            TextOverflowModes.Page;
-
+        dialogueText.overflowMode = TextOverflowModes.Page;
+        dialogueText.enableWordWrapping = true;
         dialogueText.pageToDisplay = 1;
+        dialogueText.maxVisibleCharacters = int.MaxValue;
         dialogueText.text = text;
 
-        dialogueText.ForceMeshUpdate();
+        Canvas.ForceUpdateCanvases();
+        dialogueText.ForceMeshUpdate(true, true);
 
-        return dialogueText.textInfo.pageCount <= 1;
-    }
-
-    private string JoinWords(
-        List<string> words,
-        int startIndex,
-        int endIndex)
-    {
-        int count =
-            endIndex - startIndex;
-
-        return string.Join(
-            " ",
-            words.GetRange(
-                startIndex,
-                count
-            )
-        );
+        pageCount = Mathf.Max(1, dialogueText.textInfo.pageCount);
     }
 
     private void ShowCurrentPage()
     {
-        if (pages.Count == 0)
-        {
+        if (dialogueText == null)
             return;
-        }
 
-        currentPage =
-            Mathf.Clamp(
-                currentPage,
-                0,
-                pages.Count - 1
-            );
+        currentPage = Mathf.Clamp(currentPage, 0, pageCount - 1);
 
-        if (typingCoroutine != null)
-        {
-            StopCoroutine(typingCoroutine);
-            typingCoroutine = null;
-        }
+        StopTyping();
+        ClearChoices();
 
         isTyping = false;
         textFinished = false;
 
-        dialogueText.overflowMode =
-            TextOverflowModes.Overflow;
+        dialogueText.overflowMode = TextOverflowModes.Page;
+        dialogueText.pageToDisplay = currentPage + 1;
+        dialogueText.maxVisibleCharacters = int.MaxValue;
+        dialogueText.ForceMeshUpdate(true, true);
 
-        dialogueText.text =
-            pages[currentPage];
+        int firstCharacter = GetCurrentPageFirstCharacter();
+        dialogueText.maxVisibleCharacters = firstCharacter;
 
-        dialogueText.maxVisibleCharacters = 0;
+        if (continueButton != null)
+            continueButton.gameObject.SetActive(true);
 
-        dialogueText.ForceMeshUpdate();
-
-        continueButton.gameObject.SetActive(true);
-
-        typingCoroutine =
-            StartCoroutine(TypeDialogue());
+        typingCoroutine = StartCoroutine(TypeCurrentPage());
     }
 
-    private IEnumerator TypeDialogue()
+    private IEnumerator TypeCurrentPage()
     {
         isTyping = true;
         textFinished = false;
 
-        int characterCount =
-            dialogueText.textInfo.characterCount;
+        dialogueText.ForceMeshUpdate(true, true);
 
-        if (characterCount == 0)
+        TMP_TextInfo info = dialogueText.textInfo;
+
+        if (info.characterCount == 0 ||
+            currentPage >= info.pageInfo.Length)
         {
-            FinishTyping();
+            typingCoroutine = null;
+            FinishTyping(false);
             yield break;
         }
 
-        float delay =
-            1f /
-            Mathf.Max(
-                1f,
-                charactersPerSecond
-            );
+        TMP_PageInfo page = info.pageInfo[currentPage];
 
-        for (int i = 1;
-             i <= characterCount;
-             i++)
+        int first = Mathf.Max(0, page.firstCharacterIndex);
+        int last = page.lastCharacterIndex;
+
+        if (last < first)
         {
-            dialogueText.maxVisibleCharacters = i;
+            typingCoroutine = null;
+            FinishTyping(false);
+            yield break;
+        }
+
+        float delay = 1f / Mathf.Max(1f, charactersPerSecond);
+
+        dialogueText.maxVisibleCharacters = first;
+
+        for (int i = first; i <= last; i++)
+        {
+            dialogueText.maxVisibleCharacters = i + 1;
 
             if (useUnscaledTime)
-            {
-                yield return new WaitForSecondsRealtime(
-                    delay
-                );
-            }
+                yield return new WaitForSecondsRealtime(delay);
             else
-            {
-                yield return new WaitForSeconds(
-                    delay
-                );
-            }
+                yield return new WaitForSeconds(delay);
         }
 
-        FinishTyping();
+        typingCoroutine = null;
+        FinishTyping(false);
     }
 
-    private void FinishTyping()
+    private int GetCurrentPageFirstCharacter()
     {
-        if (typingCoroutine != null)
-        {
-            StopCoroutine(typingCoroutine);
-            typingCoroutine = null;
-        }
+        TMP_TextInfo info = dialogueText.textInfo;
 
-        dialogueText.maxVisibleCharacters =
-            dialogueText.textInfo.characterCount;
+        if (currentPage < 0 || currentPage >= info.pageInfo.Length)
+            return 0;
+
+        return Mathf.Max(
+            0,
+            info.pageInfo[currentPage].firstCharacterIndex
+        );
+    }
+
+    private void FinishTyping(bool stopCoroutine = true)
+    {
+        if (stopCoroutine && typingCoroutine != null)
+            StopCoroutine(typingCoroutine);
+
+        typingCoroutine = null;
+
+        if (dialogueText != null)
+        {
+            dialogueText.maxVisibleCharacters = int.MaxValue;
+            dialogueText.ForceMeshUpdate();
+        }
 
         isTyping = false;
         textFinished = true;
 
-        bool isLastPage =
-            currentPage >= pages.Count - 1;
+        bool isLastPage = currentPage >= pageCount - 1;
 
         if (currentNode != null &&
             currentNode.HasChoices &&
             isLastPage)
         {
             ShowChoices(currentNode);
-            continueButton.gameObject.SetActive(false);
+
+            if (continueButton != null)
+                continueButton.gameObject.SetActive(false);
         }
-        else
+        else if (continueButton != null)
         {
             continueButton.gameObject.SetActive(true);
         }
@@ -381,9 +230,7 @@ public class DialogueUI : MonoBehaviour
     private void OnContinueClicked()
     {
         if (currentNode == null)
-        {
             return;
-        }
 
         if (isTyping)
         {
@@ -392,11 +239,9 @@ public class DialogueUI : MonoBehaviour
         }
 
         if (!textFinished)
-        {
             return;
-        }
 
-        if (currentPage < pages.Count - 1)
+        if (currentPage < pageCount - 1)
         {
             currentPage++;
             ShowCurrentPage();
@@ -410,33 +255,33 @@ public class DialogueUI : MonoBehaviour
     {
         ClearChoices();
 
+        if (choicesContainer == null ||
+            choiceButtonPrefab == null ||
+            node.Choices == null)
+        {
+            return;
+        }
+
         choicesContainer.gameObject.SetActive(true);
 
-        for (int i = 0;
-             i < node.Choices.Count;
-             i++)
+        for (int i = 0; i < node.Choices.Count; i++)
         {
-            int choiceIndex = i;
+            int index = i;
+            DialogueChoice choice = node.Choices[i];
 
-            DialogueChoice choice =
-                node.Choices[i];
-
-            Button button =
-                Instantiate(
-                    choiceButtonPrefab,
-                    choicesContainer
-                );
+            Button button = Instantiate(
+                choiceButtonPrefab,
+                choicesContainer
+            );
 
             TMP_Text buttonText =
                 button.GetComponentInChildren<TMP_Text>();
 
             if (buttonText != null)
-            {
                 buttonText.text = choice.Text;
-            }
 
             button.onClick.AddListener(
-                () => OnChoiceClicked(choiceIndex)
+                () => ChoiceSelected?.Invoke(index)
             );
         }
     }
@@ -444,29 +289,15 @@ public class DialogueUI : MonoBehaviour
     private void ClearChoices()
     {
         if (choicesContainer == null)
-        {
             return;
-        }
 
-        for (int i =
-                 choicesContainer.childCount - 1;
-             i >= 0;
-             i--)
-        {
-            Destroy(
-                choicesContainer.GetChild(i).gameObject
-            );
-        }
+        for (int i = choicesContainer.childCount - 1; i >= 0; i--)
+            Destroy(choicesContainer.GetChild(i).gameObject);
 
         choicesContainer.gameObject.SetActive(false);
     }
 
-    private void OnChoiceClicked(int choiceIndex)
-    {
-        ChoiceSelected?.Invoke(choiceIndex);
-    }
-
-    public void Clear()
+    private void StopTyping()
     {
         if (typingCoroutine != null)
         {
@@ -474,20 +305,33 @@ public class DialogueUI : MonoBehaviour
             typingCoroutine = null;
         }
 
+        isTyping = false;
+    }
+
+    public void Clear()
+    {
+        StopTyping();
+
         currentNode = null;
         currentPage = 0;
-
-        pages.Clear();
-
-        isTyping = false;
+        pageCount = 1;
         textFinished = false;
 
-        speakerText.text = string.Empty;
-        dialogueText.text = string.Empty;
-        dialogueText.maxVisibleCharacters = 0;
+        if (speakerText != null)
+        {
+            speakerText.text = string.Empty;
+            speakerText.gameObject.SetActive(false);
+        }
 
-        speakerText.gameObject.SetActive(false);
-        continueButton.gameObject.SetActive(false);
+        if (dialogueText != null)
+        {
+            dialogueText.text = string.Empty;
+            dialogueText.maxVisibleCharacters = 0;
+            dialogueText.pageToDisplay = 1;
+        }
+
+        if (continueButton != null)
+            continueButton.gameObject.SetActive(false);
 
         ClearChoices();
     }
