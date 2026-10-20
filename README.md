@@ -74,6 +74,7 @@ Estos requisitos amplían el sistema y permiten manejar historias más complejas
 * Mejorar presentación visual y sonora: Agregar posteriormente animaciones, expresiones, transiciones, cambios de enfoque, mezcla de audio y otros elementos de presentación.
 
 Se updatearon opciones de los casos existentes y se añadió un caso nuevo.
+Bocetos de nuevos escenarios con un estilo distintivo y singular
 
 Presentación:
 https://canva.link/er6t8bpyszy55hp
