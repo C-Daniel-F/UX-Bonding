@@ -89,8 +89,6 @@ public class DialogueUI : MonoBehaviour
                 SelectChoice(selectedChoiceIndex + 1);
             }
 
-            // Unity's EventSystem handles Enter when a choice is selected.
-            // Fall back to manual handling if no UI input module exists.
             if ((EventSystem.current == null ||
                  EventSystem.current.currentInputModule == null) &&
                 (Input.GetKeyDown(KeyCode.Return) ||
