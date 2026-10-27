@@ -75,6 +75,7 @@ Estos requisitos amplían el sistema y permiten manejar historias más complejas
 
 Se updatearon opciones de los casos existentes y se añadió un caso nuevo.
 Bocetos de nuevos escenarios con un estilo distintivo y singular
+Se hicieron nuevas anotaciones y actualizaciones dentro de la computadora de Juanmi
 
 Presentación:
 https://canva.link/er6t8bpyszy55hp
