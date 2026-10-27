@@ -246,11 +246,23 @@ MonoBehaviour:
       hideLeftCharacter: 0
       hideRightCharacter: 0
     - nodeId: presentacion_07
-      speaker: {fileID: 11400000, guid: 744ec87fa570be14d8cb7af3caf450f6, type: 2}
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
       background: {fileID: 11400000, guid: 6be65f35063d21749a301ead174f8452, type: 2}
       soundEffect: {fileID: 0}
       text: "Tienes a una persona sentada al lado tuyo, parece que s\xED estuvo atenta
         a la charla y podr\xEDa ayudarte a ponerte al d\xEDa."
+      next:
+        sceneId: act1_presentacion
+        nodeId: presentacion_08
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: presentacion_08
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: 6be65f35063d21749a301ead174f8452, type: 2}
+      soundEffect: {fileID: 0}
+      text: Decides...
       next:
         sceneId: act1_presentacion
         nodeId: 
@@ -293,8 +305,8 @@ MonoBehaviour:
       speaker: {fileID: 11400000, guid: 176ac1574d4d5c746a2b3db76b152179, type: 2}
       background: {fileID: 11400000, guid: 6be65f35063d21749a301ead174f8452, type: 2}
       soundEffect: {fileID: 0}
-      text: "Oh, \xA1si!, hablaron un poco sobre los logros de la universidad, sobre
-        tener metas, apuntar hacia la excelencia e inscribirnos a una app sobre salud."
+      text: "Oh, \xA1si!, hablaron un poco sobre los logros de la U, sobre tener
+        metas, apuntar hacia la excelencia e inscribirnos a una app sobre salud."
       next:
         sceneId: vozalta
         nodeId: vozalta_03
@@ -555,9 +567,8 @@ MonoBehaviour:
       speaker: {fileID: 11400000, guid: 176ac1574d4d5c746a2b3db76b152179, type: 2}
       background: {fileID: 11400000, guid: 6be65f35063d21749a301ead174f8452, type: 2}
       soundEffect: {fileID: 0}
-      text: "Oh, \xA1s\xED! Hablaron un poco sobre los logros de la universidad,
-        sobre tener metas, apuntar hacia la excelencia e inscribirnos a una app sobre
-        salud."
+      text: "Oh, \xA1s\xED! Hablaron un poco sobre los logros de la U, sobre tener
+        metas, apuntar hacia la excelencia e inscribirnos a una app sobre salud."
       next:
         sceneId: vozbaja
         nodeId: vozbaja_06
@@ -1357,8 +1368,8 @@ MonoBehaviour:
       text: "De esta manera concluy\xF3 tu clase de programaci\xF3n, nada mal para
         ser la primera. Lo hiciste muy bien."
       next:
-        sceneId: gameover
-        nodeId: gameover_01
+        sceneId: acto4_laboratorio
+        nodeId: lab4_start
       choices: []
       speakerSide: 0
       hideLeftCharacter: 1
@@ -1561,93 +1572,695 @@ MonoBehaviour:
       hideRightCharacter: 1
     - nodeId: maribran_14
       speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
-      background: {fileID: 11400000, guid: c2d529e6e69982c4ca1f605462d8b4a7, type: 2}
+      background: {fileID: 0}
       soundEffect: {fileID: 0}
       text: "De esta manera concluy\xF3 tu clase de programaci\xF3n, nada mal para
         ser la primera. Lo hiciste muy bien."
       next:
-        sceneId: gameover
-        nodeId: gameover_01
+        sceneId: acto4_laboratorio
+        nodeId: lab4_start
       choices: []
       speakerSide: 0
       hideLeftCharacter: 0
       hideRightCharacter: 0
-  - sceneId: gameover
-    sceneName: GameOver
-    music: {fileID: 8300000, guid: 4d03f8ed2e06386408511da10cd419b4, type: 3}
+  - sceneId: acto4_laboratorio
+    sceneName: Acto 4 Narrador Laboratorio
+    music: {fileID: 0}
     dialogueNodes:
-    - nodeId: gameover_01
-      speaker: {fileID: 11400000, guid: 5b2cedcd5f798f446b27e3a5ff8850b6, type: 2}
-      background: {fileID: 11400000, guid: fd938031cbd088f4ea6456e5123068c6, type: 2}
+    - nodeId: lab4_start
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: 28295ca6d5cff1b4ba8c7557a0d49eb2, type: 2}
       soundEffect: {fileID: 0}
-      text: Brooooo, como asi que no pudiste terminar el proyecto a tiempo...
+      text: "Llegaste a la segunda clase de tu d\xEDa, la cual trata de un laboratorio
+        de Qu\xEDmica. Procedes a sentarte en una mesa aleatoria; pronto el profesor
+        vendr\xE1 a dar inicio a la clase."
       next:
-        sceneId: gameover
-        nodeId: gameover_02
+        sceneId: acto4_laboratorio
+        nodeId: lab4_intro_prompt
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_intro_prompt
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 0}
+      soundEffect: {fileID: 0}
+      text: "Al lado tuyo se sienta un compa\xF1ero que se ve algo mayor, quiz\xE1
+        llegando a sus 30 a\xF1os. \xBFQu\xE9 haces?"
+      next:
+        sceneId: 
+        nodeId: 
+      choices:
+      - choiceId: lab4_greet
+        text: Lo saludas
+        destination:
+          sceneId: acto4_laboratorio
+          nodeId: lab4_greet_1
+      - choiceId: lab4_look
+        text: Te quedas analizando su apariencia
+        destination:
+          sceneId: acto4_laboratorio
+          nodeId: lab4_look_1
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_greet_1
+      speaker: {fileID: 11400000, guid: 744ec87fa570be14d8cb7af3caf450f6, type: 2}
+      background: {fileID: 0}
+      soundEffect: {fileID: 0}
+      text: "Hola, \xBFqu\xE9 tal?"
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_greet_2
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_greet_2
+      speaker: {fileID: 11400000, guid: 4796d1ca62d32f2488a7d638209da5eb, type: 2}
+      background: {fileID: 0}
+      soundEffect: {fileID: 0}
+      text: Hola, un gusto.
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_greet_3
       choices: []
       speakerSide: 1
       hideLeftCharacter: 0
       hideRightCharacter: 0
-    - nodeId: gameover_02
-      speaker: {fileID: 11400000, guid: 5b2cedcd5f798f446b27e3a5ff8850b6, type: 2}
-      background: {fileID: 11400000, guid: fd938031cbd088f4ea6456e5123068c6, type: 2}
+    - nodeId: lab4_greet_3
+      speaker: {fileID: 11400000, guid: 744ec87fa570be14d8cb7af3caf450f6, type: 2}
+      background: {fileID: 0}
       soundEffect: {fileID: 0}
-      text: No que muy maquina, pues...
+      text: "Soy Vincent, me diste mucha curiosidad. \xBFDe qu\xE9 carrera eres?"
       next:
-        sceneId: gameover
-        nodeId: gameover_03
+        sceneId: acto4_laboratorio
+        nodeId: lab4_greet_4
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 1
+    - nodeId: lab4_greet_4
+      speaker: {fileID: 11400000, guid: 4796d1ca62d32f2488a7d638209da5eb, type: 2}
+      background: {fileID: 0}
+      soundEffect: {fileID: 0}
+      text: "De Civil, \xBFy vos?"
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_greet_5
       choices: []
       speakerSide: 1
       hideLeftCharacter: 0
       hideRightCharacter: 0
-    - nodeId: gameover_03
-      speaker: {fileID: 11400000, guid: 5b2cedcd5f798f446b27e3a5ff8850b6, type: 2}
-      background: {fileID: 11400000, guid: fd938031cbd088f4ea6456e5123068c6, type: 2}
+    - nodeId: lab4_greet_5
+      speaker: {fileID: 11400000, guid: 744ec87fa570be14d8cb7af3caf450f6, type: 2}
+      background: {fileID: 0}
       soundEffect: {fileID: 0}
-      text: Bueno, como bien leen, mi querido companiero se quedo dormido
+      text: Ah, de compu.
       next:
-        sceneId: gameover
-        nodeId: gameover_04
+        sceneId: acto4_laboratorio
+        nodeId: lab4_mario_arrives
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_look_1
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 0}
+      soundEffect: {fileID: 0}
+      text: "Te quedas analizando su apariencia por un buen rato hasta que inicia
+        la clase. En eso llega otro compa\xF1ero a la mesa."
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_mario_arrives
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_mario_arrives
+      speaker: {fileID: 11400000, guid: 5b2cedcd5f798f446b27e3a5ff8850b6, type: 2}
+      background: {fileID: 0}
+      soundEffect: {fileID: 0}
+      text: "Broo, disculpa que te moleste, \xBFaqu\xED est\xE1 ocupado?"
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_hazen_seat
       choices: []
       speakerSide: 1
       hideLeftCharacter: 0
       hideRightCharacter: 0
-    - nodeId: gameover_04
-      speaker: {fileID: 11400000, guid: 5b2cedcd5f798f446b27e3a5ff8850b6, type: 2}
-      background: {fileID: 11400000, guid: fd938031cbd088f4ea6456e5123068c6, type: 2}
+    - nodeId: lab4_hazen_seat
+      speaker: {fileID: 11400000, guid: 4796d1ca62d32f2488a7d638209da5eb, type: 2}
+      background: {fileID: 0}
       soundEffect: {fileID: 0}
-      text: Claramente la de estudiar no se la sabe, va a sacar un su 16 en el parcial
-        de stats.
+      text: "Si\xE9ntate sin problema."
       next:
-        sceneId: gameover
-        nodeId: gameover_05
+        sceneId: acto4_laboratorio
+        nodeId: lab4_hugo_intro
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_hugo_intro
+      speaker: {fileID: 11400000, guid: 4e051ea65662e8e4b9168b698c8fe712, type: 2}
+      background: {fileID: 0}
+      soundEffect: {fileID: 0}
+      text: "Hola, chicos. Yo soy Hugo y ser\xE9 su catedr\xE1tico de Qu\xEDmica
+        durante este ciclo. El d\xEDa de hoy solo haremos una breve actividad para
+        que se conozcan mejor y as\xED trabajar de mejor manera durante el laboratorio."
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_mario_familiar
       choices: []
       speakerSide: 1
       hideLeftCharacter: 0
       hideRightCharacter: 0
-    - nodeId: gameover_05
+    - nodeId: lab4_mario_familiar
       speaker: {fileID: 11400000, guid: 5b2cedcd5f798f446b27e3a5ff8850b6, type: 2}
-      background: {fileID: 11400000, guid: fd938031cbd088f4ea6456e5123068c6, type: 2}
+      background: {fileID: 0}
       soundEffect: {fileID: 0}
-      text: Pero Don Tiago, porfa piense en los buenos momentos...
+      text: Ey, te me haces algo conocido.
       next:
-        sceneId: gameover
-        nodeId: gameover_06
+        sceneId: 
+        nodeId: 
+      choices:
+      - choiceId: lab4_bad_memory_choice
+        text: Emmm, tengo algo de mala memoria
+        destination:
+          sceneId: acto4_laboratorio
+          nodeId: lab4_bad_memory_1
+      - choiceId: lab4_bro_choice
+        text: "Amigazo, \xBFqu\xE9 onda?"
+        destination:
+          sceneId: acto4_laboratorio
+          nodeId: lab4_bro_1
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_bad_memory_1
+      speaker: {fileID: 11400000, guid: 744ec87fa570be14d8cb7af3caf450f6, type: 2}
+      background: {fileID: 0}
+      soundEffect: {fileID: 0}
+      text: Emmm, tengo algo de mala memoria.
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_bad_memory_2
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_bad_memory_2
+      speaker: {fileID: 11400000, guid: 5b2cedcd5f798f446b27e3a5ff8850b6, type: 2}
+      background: {fileID: 0}
+      soundEffect: {fileID: 0}
+      text: No te preocupes, me suele pasar igual jaja.
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_activity_hint
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 1
+    - nodeId: lab4_bro_1
+      speaker: {fileID: 11400000, guid: 744ec87fa570be14d8cb7af3caf450f6, type: 2}
+      background: {fileID: 0}
+      soundEffect: {fileID: 0}
+      text: "Amigazo, \xBFqu\xE9 onda?"
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_bro_2
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 1
+      hideRightCharacter: 1
+    - nodeId: lab4_bro_2
+      speaker: {fileID: 11400000, guid: 5b2cedcd5f798f446b27e3a5ff8850b6, type: 2}
+      background: {fileID: 11400000, guid: 28295ca6d5cff1b4ba8c7557a0d49eb2, type: 2}
+      soundEffect: {fileID: 0}
+      text: "\xA1Mi broooo! \xBFQu\xE9 cuentas?"
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_activity_hint
       choices: []
       speakerSide: 1
       hideLeftCharacter: 0
       hideRightCharacter: 0
-    - nodeId: gameover_06
-      speaker: {fileID: 11400000, guid: 5b2cedcd5f798f446b27e3a5ff8850b6, type: 2}
-      background: {fileID: 11400000, guid: fd938031cbd088f4ea6456e5123068c6, type: 2}
+    - nodeId: lab4_activity_hint
+      speaker: {fileID: 11400000, guid: 4796d1ca62d32f2488a7d638209da5eb, type: 2}
+      background: {fileID: 11400000, guid: 28295ca6d5cff1b4ba8c7557a0d49eb2, type: 2}
       soundEffect: {fileID: 0}
-      text: En fin, si quieren volver a jugar, denle click abajo... o mejor vengan
-        por unas chelas conmigo, ya saben.
+      text: "Parece que la actividad ya est\xE1 por comenzar."
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_hugo_assignment
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_hugo_assignment
+      speaker: {fileID: 11400000, guid: 4e051ea65662e8e4b9168b698c8fe712, type: 2}
+      background: {fileID: 11400000, guid: 28295ca6d5cff1b4ba8c7557a0d49eb2, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Necesito que con los de su mesa hagan una breve presentaci\xF3n sobre
+        un tema relacionado con la Qu\xEDmica que forme parte de nuestra vida diaria."
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_mario_beer_suggestion
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_mario_beer_suggestion
+      speaker: {fileID: 11400000, guid: 5b2cedcd5f798f446b27e3a5ff8850b6, type: 2}
+      background: {fileID: 11400000, guid: 28295ca6d5cff1b4ba8c7557a0d49eb2, type: 2}
+      soundEffect: {fileID: 0}
+      text: "\xBFY si hablamos sobre chelas?"
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_hazen_soda_suggestion
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_hazen_soda_suggestion
+      speaker: {fileID: 11400000, guid: 4796d1ca62d32f2488a7d638209da5eb, type: 2}
+      background: {fileID: 11400000, guid: 28295ca6d5cff1b4ba8c7557a0d49eb2, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Jaja, me llegas, pero creo que ser\xEDa mejor enfocarlo en gaseosas."
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_topic_prompt
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_topic_prompt
+      speaker: {fileID: 11400000, guid: 4796d1ca62d32f2488a7d638209da5eb, type: 2}
+      background: {fileID: 11400000, guid: 28295ca6d5cff1b4ba8c7557a0d49eb2, type: 2}
+      soundEffect: {fileID: 0}
+      text: "\xBFQu\xE9 opinas vos?"
+      next:
+        sceneId: 
+        nodeId: 
+      choices:
+      - choiceId: lab4_topic_soda
+        text: Hablar sobre gaseosas
+        destination:
+          sceneId: acto4_laboratorio
+          nodeId: lab4_soda_choice
+      - choiceId: lab4_topic_beer
+        text: Quedarse con chelas
+        destination:
+          sceneId: acto4_laboratorio
+          nodeId: lab4_beer_mario_expert
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_soda_choice
+      speaker: {fileID: 11400000, guid: 4796d1ca62d32f2488a7d638209da5eb, type: 2}
+      background: {fileID: 11400000, guid: 28295ca6d5cff1b4ba8c7557a0d49eb2, type: 2}
+      soundEffect: {fileID: 0}
+      text: Perfecto, ya tenemos un buen inicio.
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_soda_mario_reaction
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_soda_mario_reaction
+      speaker: {fileID: 11400000, guid: 5b2cedcd5f798f446b27e3a5ff8850b6, type: 2}
+      background: {fileID: 11400000, guid: 28295ca6d5cff1b4ba8c7557a0d49eb2, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Estaba m\xE1s divertida la otra idea, pero s\xE9 que podemos hacer esto
+        bien r\xE1pido."
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_who_goes_first
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_who_goes_first
+      speaker: {fileID: 11400000, guid: 4e051ea65662e8e4b9168b698c8fe712, type: 2}
+      background: {fileID: 11400000, guid: 28295ca6d5cff1b4ba8c7557a0d49eb2, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Muy bien, \xBFqu\xE9 grupo quiere pasar primero?"
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_mario_volunteers
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_mario_volunteers
+      speaker: {fileID: 11400000, guid: 5b2cedcd5f798f446b27e3a5ff8850b6, type: 2}
+      background: {fileID: 11400000, guid: 28295ca6d5cff1b4ba8c7557a0d49eb2, type: 2}
+      soundEffect: {fileID: 0}
+      text: Podemos pasar nosotros.
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_hazen_practice
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_hazen_practice
+      speaker: {fileID: 11400000, guid: 4796d1ca62d32f2488a7d638209da5eb, type: 2}
+      background: {fileID: 11400000, guid: 28295ca6d5cff1b4ba8c7557a0d49eb2, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Yo preferir\xEDa practicar un poco m\xE1s."
+      next:
+        sceneId: 
+        nodeId: 
+      choices:
+      - choiceId: lab4_raise_hand_choice
+        text: Levantar la mano.
+        destination:
+          sceneId: acto4_laboratorio
+          nodeId: lab4_raise_hugo
+      - choiceId: lab4_wait_choice
+        text: Decides esperar.
+        destination:
+          sceneId: acto4_laboratorio
+          nodeId: lab4_wait_hazen
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_raise_hugo
+      speaker: {fileID: 11400000, guid: 4e051ea65662e8e4b9168b698c8fe712, type: 2}
+      background: {fileID: 11400000, guid: 28295ca6d5cff1b4ba8c7557a0d49eb2, type: 2}
+      soundEffect: {fileID: 0}
+      text: Excelente, pasen al frente.
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_raise_mario
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_raise_mario
+      speaker: {fileID: 11400000, guid: 5b2cedcd5f798f446b27e3a5ff8850b6, type: 2}
+      background: {fileID: 11400000, guid: 28295ca6d5cff1b4ba8c7557a0d49eb2, type: 2}
+      soundEffect: {fileID: 0}
+      text: Esa es la actitud.
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_raise_hazen
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_raise_hazen
+      speaker: {fileID: 11400000, guid: 4796d1ca62d32f2488a7d638209da5eb, type: 2}
+      background: {fileID: 11400000, guid: 28295ca6d5cff1b4ba8c7557a0d49eb2, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Va, est\xE1 bien, espero que estemos listos."
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_raise_teacher_asks
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_raise_teacher_asks
+      speaker: {fileID: 11400000, guid: 4e051ea65662e8e4b9168b698c8fe712, type: 2}
+      background: {fileID: 11400000, guid: 28295ca6d5cff1b4ba8c7557a0d49eb2, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Veamos, chicos, \xBFqu\xE9 prepararon ustedes?"
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_poor_presentation
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_poor_presentation
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: 28295ca6d5cff1b4ba8c7557a0d49eb2, type: 2}
+      soundEffect: {fileID: 0}
+      text: "T\xFA y tu grupo procedieron a introducir el tema y hablaron un poco
+        menos de lo esperado. Quiz\xE1 hubiera sido m\xE1s \xFAtil investigar un
+        poco m\xE1s."
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_poor_feedback
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_poor_feedback
+      speaker: {fileID: 11400000, guid: 4e051ea65662e8e4b9168b698c8fe712, type: 2}
+      background: {fileID: 11400000, guid: 28295ca6d5cff1b4ba8c7557a0d49eb2, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Me gust\xF3 mucho la iniciativa que tuvieron, muchachos, pero s\xED
+        necesito que fundamenten mejor los ejemplos que me dieron. Con algo m\xE1s
+        de investigaci\xF3n puede salir."
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_hazen_practice
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_wait_hazen
+      speaker: {fileID: 11400000, guid: 4796d1ca62d32f2488a7d638209da5eb, type: 2}
+      background: {fileID: 11400000, guid: 28295ca6d5cff1b4ba8c7557a0d49eb2, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Gracias, as\xED podremos prepararnos mejor."
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_wait_mario
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_wait_mario
+      speaker: {fileID: 11400000, guid: 5b2cedcd5f798f446b27e3a5ff8850b6, type: 2}
+      background: {fileID: 11400000, guid: 28295ca6d5cff1b4ba8c7557a0d49eb2, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Est\xE1 bien, pero no quiero ser el \xFAltimo."
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_prepared_narration
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_prepared_narration
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: 28295ca6d5cff1b4ba8c7557a0d49eb2, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Como tuvieron m\xE1s tiempo para fundamentar el tema con principios
+        qu\xEDmicos, prepararon una presentaci\xF3n bastante s\xF3lida."
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_prepared_hugo
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_prepared_hugo
+      speaker: {fileID: 11400000, guid: 4e051ea65662e8e4b9168b698c8fe712, type: 2}
+      background: {fileID: 11400000, guid: 28295ca6d5cff1b4ba8c7557a0d49eb2, type: 2}
+      soundEffect: {fileID: 0}
+      text: Bien, muchachos, es su turno.
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_prepared_presentation
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_prepared_presentation
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: 28295ca6d5cff1b4ba8c7557a0d49eb2, type: 2}
+      soundEffect: {fileID: 0}
+      text: "T\xFA y tu grupo hicieron una gran presentaci\xF3n. Demostraron con
+        datos ver\xEDdicos la composici\xF3n de las bebidas gaseosas azucaradas,
+        supieron responder las preguntas del maestro y hablaron con confianza, lo
+        cual fue clave para transmitir el mensaje."
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_prepared_congratulations
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_prepared_congratulations
+      speaker: {fileID: 11400000, guid: 4e051ea65662e8e4b9168b698c8fe712, type: 2}
+      background: {fileID: 11400000, guid: 28295ca6d5cff1b4ba8c7557a0d49eb2, type: 2}
+      soundEffect: {fileID: 0}
+      text: Felicidades, grupo. Lo hicieron bastante bien.
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_good_mario
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_good_mario
+      speaker: {fileID: 11400000, guid: 5b2cedcd5f798f446b27e3a5ff8850b6, type: 2}
+      background: {fileID: 11400000, guid: 28295ca6d5cff1b4ba8c7557a0d49eb2, type: 2}
+      soundEffect: {fileID: 0}
+      text: "\xA1Grande, Huguitoooo! Esto amerita un shucazo."
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_good_hazen
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_good_hazen
+      speaker: {fileID: 11400000, guid: 4796d1ca62d32f2488a7d638209da5eb, type: 2}
+      background: {fileID: 11400000, guid: 28295ca6d5cff1b4ba8c7557a0d49eb2, type: 2}
+      soundEffect: {fileID: 0}
+      text: "\xBFQu\xE9 es eso?"
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_good_mario_teaches
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_good_mario_teaches
+      speaker: {fileID: 11400000, guid: 5b2cedcd5f798f446b27e3a5ff8850b6, type: 2}
+      background: {fileID: 11400000, guid: 28295ca6d5cff1b4ba8c7557a0d49eb2, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Yo les ense\xF1o, aqu\xED est\xE1 fuera de la uni."
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_good_end
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_good_end
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: 28295ca6d5cff1b4ba8c7557a0d49eb2, type: 2}
+      soundEffect: {fileID: 8300000, guid: ded2a76dd1e0754408f4ab11dd125ef5, type: 3}
+      text: "Y de esta manera conociste nuevos amigos y un puesto de comida bastante
+        bueno. Tomarte tu tiempo para dar el mejor resultado es clave para la excelencia
+        acad\xE9mica que un estudiante UVG necesita. Good ending. Fin del juego."
       next:
         sceneId: titlescreen
         nodeId: title_01
       choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_beer_mario_expert
+      speaker: {fileID: 11400000, guid: 5b2cedcd5f798f446b27e3a5ff8850b6, type: 2}
+      background: {fileID: 11400000, guid: 28295ca6d5cff1b4ba8c7557a0d49eb2, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Aqu\xED soy un experto."
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_beer_hazen_ready
+      choices: []
       speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_beer_hazen_ready
+      speaker: {fileID: 11400000, guid: 4796d1ca62d32f2488a7d638209da5eb, type: 2}
+      background: {fileID: 11400000, guid: 28295ca6d5cff1b4ba8c7557a0d49eb2, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Esperemos que al profe le guste la presentaci\xF3n."
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_beer_mario_remarks
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_beer_mario_remarks
+      speaker: {fileID: 11400000, guid: 5b2cedcd5f798f446b27e3a5ff8850b6, type: 2}
+      background: {fileID: 11400000, guid: 28295ca6d5cff1b4ba8c7557a0d49eb2, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Jajaaaa, claro que s\xED. \xBFA qui\xE9n no le gusta una buena chela
+        fr\xEDa?"
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_beer_hazen_reaction
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_beer_hazen_reaction
+      speaker: {fileID: 11400000, guid: 4796d1ca62d32f2488a7d638209da5eb, type: 2}
+      background: {fileID: 11400000, guid: 28295ca6d5cff1b4ba8c7557a0d49eb2, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Ey, eso tambi\xE9n es una reacci\xF3n qu\xEDmica."
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_beer_mario_ready
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_beer_mario_ready
+      speaker: {fileID: 11400000, guid: 5b2cedcd5f798f446b27e3a5ff8850b6, type: 2}
+      background: {fileID: 11400000, guid: 28295ca6d5cff1b4ba8c7557a0d49eb2, type: 2}
+      soundEffect: {fileID: 0}
+      text: Tenemos todo para exponer.
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_beer_hugo_asks
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_beer_hugo_asks
+      speaker: {fileID: 11400000, guid: 4e051ea65662e8e4b9168b698c8fe712, type: 2}
+      background: {fileID: 11400000, guid: 28295ca6d5cff1b4ba8c7557a0d49eb2, type: 2}
+      soundEffect: {fileID: 0}
+      text: "Muy bien, chicos, quiero ver su presentaci\xF3n."
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_beer_presentation
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_beer_presentation
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: 28295ca6d5cff1b4ba8c7557a0d49eb2, type: 2}
+      soundEffect: {fileID: 0}
+      text: "T\xFA y tu grupo hicieron una presentaci\xF3n que, a pesar de tener
+        un tema curioso como eje principal, supo demostrar con datos ver\xEDdicos
+        algunas de las reacciones qu\xEDmicas que surgen con esta bebida, siempre
+        recordando que no es sano beber en exceso."
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_beer_hugo_feedback
+      choices: []
+      speakerSide: 0
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_beer_hugo_feedback
+      speaker: {fileID: 11400000, guid: 4e051ea65662e8e4b9168b698c8fe712, type: 2}
+      background: {fileID: 11400000, guid: 28295ca6d5cff1b4ba8c7557a0d49eb2, type: 2}
+      soundEffect: {fileID: 0}
+      text: "No me esperaba que presentaran algo as\xED, pero estuvo muy bien fundamentado."
+      next:
+        sceneId: acto4_laboratorio
+        nodeId: lab4_beer_end
+      choices: []
+      speakerSide: 1
+      hideLeftCharacter: 0
+      hideRightCharacter: 0
+    - nodeId: lab4_beer_end
+      speaker: {fileID: 11400000, guid: 3f62b7a39a8e69d43a46cb1900aecd4b, type: 2}
+      background: {fileID: 11400000, guid: 28295ca6d5cff1b4ba8c7557a0d49eb2, type: 2}
+      soundEffect: {fileID: 8300000, guid: 4d03f8ed2e06386408511da10cd419b4, type: 3}
+      text: "Y de esta manera pudiste conocer algunos intereses de tus nuevos compa\xF1eros
+        y descubrir que las clases pueden ser m\xE1s interesantes cuando las asociamos
+        con algo que ya conocemos. Final chelas. \xA1Fin!"
+      next:
+        sceneId: titlescreen
+        nodeId: title_01
+      choices: []
+      speakerSide: 0
       hideLeftCharacter: 0
       hideRightCharacter: 0
   characters:

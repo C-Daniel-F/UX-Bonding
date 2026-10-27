@@ -1,8 +1,10 @@
+using System.Collections.Generic;
 using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class DialogueUI : MonoBehaviour
 {
@@ -10,9 +12,18 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] private TMP_Text speakerText;
     [SerializeField] private TMP_Text dialogueText;
 
+    [Header("Font")]
+    [SerializeField] private TMP_FontAsset pixelifySansFont;
+
     [Header("Typing")]
     [SerializeField, Min(1f)] private float charactersPerSecond = 40f;
     [SerializeField] private bool useUnscaledTime = true;
+
+    [Header("Punctuation Pauses")]
+    [SerializeField, Min(0f)] private float commaPause = 0.12f;
+    [SerializeField, Min(0f)] private float sentencePause = 0.25f;
+    [SerializeField, Min(0f)] private float ellipsisPause = 0.5f;
+    [SerializeField, Min(0f)] private float newlinePause = 0.2f;
 
     [Header("Continue")]
     [SerializeField] private Button continueButton;
@@ -23,6 +34,9 @@ public class DialogueUI : MonoBehaviour
 
     public event Action ContinuePressed;
     public event Action<int> ChoiceSelected;
+
+    private readonly List<Button> choiceButtons = new List<Button>();
+    private int selectedChoiceIndex;
 
     private DialogueNode currentNode;
     private Coroutine typingCoroutine;
@@ -35,6 +49,9 @@ public class DialogueUI : MonoBehaviour
 
     private void Awake()
     {
+        ApplyFont(speakerText);
+        ApplyFont(dialogueText);
+
         if (continueButton != null)
             continueButton.onClick.AddListener(OnContinueClicked);
 
@@ -46,6 +63,78 @@ public class DialogueUI : MonoBehaviour
 
         if (choicesContainer != null)
             choicesContainer.gameObject.SetActive(false);
+    }
+
+
+    private void Update()
+    {
+        if (currentNode == null)
+            return;
+
+        bool choicesVisible =
+            choicesContainer != null &&
+            choicesContainer.gameObject.activeInHierarchy &&
+            choiceButtons.Count > 0;
+
+        if (choicesVisible)
+        {
+            if (Input.GetKeyDown(KeyCode.UpArrow) ||
+                Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                SelectChoice(selectedChoiceIndex - 1);
+            }
+            else if (Input.GetKeyDown(KeyCode.DownArrow) ||
+                     Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                SelectChoice(selectedChoiceIndex + 1);
+            }
+
+            // Unity's EventSystem handles Enter when a choice is selected.
+            // Fall back to manual handling if no UI input module exists.
+            if ((EventSystem.current == null ||
+                 EventSystem.current.currentInputModule == null) &&
+                (Input.GetKeyDown(KeyCode.Return) ||
+                 Input.GetKeyDown(KeyCode.KeypadEnter)))
+            {
+                choiceButtons[selectedChoiceIndex].onClick.Invoke();
+            }
+
+            return;
+        }
+
+        if ((EventSystem.current == null ||
+             EventSystem.current.currentInputModule == null) &&
+            (Input.GetKeyDown(KeyCode.Return) ||
+             Input.GetKeyDown(KeyCode.KeypadEnter)))
+        {
+            OnContinueClicked();
+        }
+    }
+
+    private void SelectChoice(int index)
+    {
+        if (choiceButtons.Count == 0)
+            return;
+
+        selectedChoiceIndex =
+            (index % choiceButtons.Count + choiceButtons.Count)
+            % choiceButtons.Count;
+
+        Button selectedButton = choiceButtons[selectedChoiceIndex];
+
+        if (EventSystem.current != null)
+        {
+            EventSystem.current.SetSelectedGameObject(
+                selectedButton.gameObject
+            );
+        }
+    }
+
+
+    private void ApplyFont(TMP_Text textComponent)
+    {
+        if (textComponent != null && pixelifySansFont != null)
+            textComponent.font = pixelifySansFont;
     }
 
     private void OnDestroy()
@@ -93,6 +182,7 @@ public class DialogueUI : MonoBehaviour
         speakerText.text = node.Speaker.DisplayName;
     }
 
+
     private void PrepareDialogue(string text)
     {
         dialogueText.overflowMode = TextOverflowModes.Page;
@@ -105,6 +195,185 @@ public class DialogueUI : MonoBehaviour
         dialogueText.ForceMeshUpdate(true, true);
 
         pageCount = Mathf.Max(1, dialogueText.textInfo.pageCount);
+
+        if (currentNode == null ||
+            !currentNode.HasChoices ||
+            pageCount < 2)
+        {
+            return;
+        }
+
+        int originalPageCount = pageCount;
+        int previousPageIndex = originalPageCount - 2;
+
+        List<int> wordStarts = GetWordStartsOnPage(
+            dialogueText.textInfo,
+            previousPageIndex
+        );
+
+        // Try moving three or more words onto the final page.
+        for (int wordsToMove = 3;
+             wordsToMove <= wordStarts.Count;
+             wordsToMove++)
+        {
+            int insertIndex =
+                wordStarts[wordStarts.Count - wordsToMove];
+
+            if (insertIndex < 0 || insertIndex > text.Length)
+                continue;
+
+            dialogueText.text = text.Insert(insertIndex, "<page>");
+
+            Canvas.ForceUpdateCanvases();
+            dialogueText.ForceMeshUpdate(true, true);
+
+            int candidatePageCount =
+                Mathf.Max(1, dialogueText.textInfo.pageCount);
+
+            // Never accept a solution that adds another page.
+            if (candidatePageCount > originalPageCount)
+                continue;
+
+            int finalPageWords = CountWordsOnPage(
+                dialogueText.textInfo,
+                candidatePageCount - 1
+            );
+
+            if (finalPageWords >= 4)
+            {
+                pageCount = candidatePageCount;
+                return;
+            }
+        }
+
+        // No suitable adjustment found: restore the original text.
+        dialogueText.text = text;
+
+        Canvas.ForceUpdateCanvases();
+        dialogueText.ForceMeshUpdate(true, true);
+
+        pageCount = Mathf.Max(1, dialogueText.textInfo.pageCount);
+    }
+
+    private List<int> GetWordStartsOnPage(
+        TMP_TextInfo info,
+        int targetPage)
+    {
+        List<int> wordStarts = new List<int>();
+        bool insideWord = false;
+
+        for (int i = 0; i < info.characterCount; i++)
+        {
+            TMP_CharacterInfo character = info.characterInfo[i];
+
+            if (character.pageNumber != targetPage)
+            {
+                insideWord = false;
+                continue;
+            }
+
+            if (char.IsWhiteSpace(character.character))
+            {
+                insideWord = false;
+            }
+            else if (!insideWord)
+            {
+                wordStarts.Add(character.index);
+                insideWord = true;
+            }
+        }
+
+        return wordStarts;
+    }
+
+    private int CountWordsOnPage(
+        TMP_TextInfo info,
+        int targetPage)
+    {
+        int count = 0;
+        bool insideWord = false;
+
+        for (int i = 0; i < info.characterCount; i++)
+        {
+            TMP_CharacterInfo character = info.characterInfo[i];
+
+            if (character.pageNumber != targetPage)
+            {
+                insideWord = false;
+                continue;
+            }
+
+            if (char.IsWhiteSpace(character.character))
+            {
+                insideWord = false;
+            }
+            else if (!insideWord)
+            {
+                count++;
+                insideWord = true;
+            }
+        }
+
+        return count;
+    }
+
+
+    private int CountWordsInPage(TMP_TextInfo info, TMP_PageInfo page)
+    {
+        int start = Mathf.Max(0, page.firstCharacterIndex);
+        int end = Mathf.Min(page.lastCharacterIndex, info.characterCount - 1);
+
+        int words = 0;
+        bool insideWord = false;
+
+        for (int i = start; i <= end; i++)
+        {
+            char c = info.characterInfo[i].character;
+
+            if (char.IsWhiteSpace(c))
+            {
+                insideWord = false;
+            }
+            else if (!insideWord)
+            {
+                words++;
+                insideWord = true;
+            }
+        }
+
+        return words;
+    }
+
+    private int GetWordStartStringIndex(
+        TMP_TextInfo info,
+        TMP_PageInfo page,
+        int wordsFromEnd)
+    {
+        int start = Mathf.Max(0, page.firstCharacterIndex);
+        int end = Mathf.Min(page.lastCharacterIndex, info.characterCount - 1);
+
+        List<int> wordStarts = new List<int>();
+        bool insideWord = false;
+
+        for (int i = start; i <= end; i++)
+        {
+            char c = info.characterInfo[i].character;
+
+            if (char.IsWhiteSpace(c))
+            {
+                insideWord = false;
+            }
+            else if (!insideWord)
+            {
+                wordStarts.Add(info.characterInfo[i].index);
+                insideWord = true;
+            }
+        }
+
+        if (wordStarts.Count < wordsFromEnd)
+            return -1;
+
+        return wordStarts[wordStarts.Count - wordsFromEnd];
     }
 
     private void ShowCurrentPage()
@@ -129,10 +398,20 @@ public class DialogueUI : MonoBehaviour
         dialogueText.maxVisibleCharacters = firstCharacter;
 
         if (continueButton != null)
+        {
             continueButton.gameObject.SetActive(true);
+
+            if (EventSystem.current != null)
+            {
+                EventSystem.current.SetSelectedGameObject(
+                    continueButton.gameObject
+                );
+            }
+        }
 
         typingCoroutine = StartCoroutine(TypeCurrentPage());
     }
+
 
     private IEnumerator TypeCurrentPage()
     {
@@ -164,22 +443,56 @@ public class DialogueUI : MonoBehaviour
         }
 
         float delay = 1f / Mathf.Max(1f, charactersPerSecond);
-
         dialogueText.maxVisibleCharacters = first;
+
 
         for (int i = first; i <= last; i++)
         {
             dialogueText.maxVisibleCharacters = i + 1;
 
+            char currentChar = info.characterInfo[i].character;
+            float pause = 0f;
+
+            if (currentChar == ',')
+            {
+                pause = commaPause;
+            }
+            else if (currentChar == '.' &&
+                     i + 2 < info.characterCount &&
+                     info.characterInfo[i + 1].character == '.' &&
+                     info.characterInfo[i + 2].character == '.')
+            {
+                pause = ellipsisPause;
+            }
+            else if (currentChar == '.' &&
+         i > 0 &&
+         info.characterInfo[i - 1].character == '.')
+            {
+                pause = 0f;
+            }
+            else if (currentChar == '.' ||
+                     currentChar == '!' ||
+                     currentChar == '?' )
+            {
+                pause = sentencePause;
+            }
+            else if (currentChar == '\n')
+            {
+                pause = newlinePause;
+            }
+
+            float waitTime = delay + pause;
+
             if (useUnscaledTime)
-                yield return new WaitForSecondsRealtime(delay);
+                yield return new WaitForSecondsRealtime(waitTime);
             else
-                yield return new WaitForSeconds(delay);
+                yield return new WaitForSeconds(waitTime);
         }
 
         typingCoroutine = null;
         FinishTyping(false);
     }
+
 
     private int GetCurrentPageFirstCharacter()
     {
@@ -274,16 +587,28 @@ public class DialogueUI : MonoBehaviour
                 choicesContainer
             );
 
+            Navigation navigation = button.navigation;
+            navigation.mode = Navigation.Mode.None;
+            button.navigation = navigation;
+
+            choiceButtons.Add(button);
+
             TMP_Text buttonText =
                 button.GetComponentInChildren<TMP_Text>();
 
             if (buttonText != null)
+            {
+                ApplyFont(buttonText);
                 buttonText.text = choice.Text;
+            }
 
             button.onClick.AddListener(
                 () => ChoiceSelected?.Invoke(index)
             );
         }
+
+        if (choiceButtons.Count > 0)
+            SelectChoice(0);
     }
 
     private void ClearChoices()
@@ -293,6 +618,9 @@ public class DialogueUI : MonoBehaviour
 
         for (int i = choicesContainer.childCount - 1; i >= 0; i--)
             Destroy(choicesContainer.GetChild(i).gameObject);
+
+        choiceButtons.Clear();
+        selectedChoiceIndex = 0;
 
         choicesContainer.gameObject.SetActive(false);
     }

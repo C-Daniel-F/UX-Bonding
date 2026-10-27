@@ -1,0 +1,84 @@
+# UX Bonding Narrador Acto 4: Laboratorio
+# Formato compatible con Bulk Dialogue Importer.
+# Los nombres de speaker deben coincidir exactamente con Character.DisplayName en Unity.
+# Se interpreta "Tú" como Vincent, y "Hugo (Profe)" como Hugo.
+# Las notas entre paréntesis del documento fuente sobre volver a una elección se implementan como destinos, no como diálogo visible.
+
+SCENE|acto4_laboratorio|Acto 4 Narrador Laboratorio
+
+# INTRODUCCIÓN Y DECISIÓN INICIAL
+NODE|lab4_start|Narrador|Left|Llegaste a la segunda clase de tu día, la cual trata de un laboratorio de Química. Procedes a sentarte en una mesa aleatoria; pronto el profesor vendrá a dar inicio a la clase.|lab4_intro_prompt
+NODE|lab4_intro_prompt|Narrador|Left|Al lado tuyo se sienta un compañero que se ve algo mayor, quizá llegando a sus 30 años. ¿Qué haces?|END
+CHOICE|lab4_intro_prompt|lab4_greet|Lo saludas|lab4_greet_1
+CHOICE|lab4_intro_prompt|lab4_look|Te quedas analizando su apariencia|lab4_look_1
+
+# RUTA: SALUDAR
+NODE|lab4_greet_1|Tu|Left|Hola, ¿qué tal?|lab4_greet_2
+NODE|lab4_greet_2|Hazen|Right|Hola, un gusto.|lab4_greet_3
+NODE|lab4_greet_3|Tu|Left|Soy Vincent, me diste mucha curiosidad. ¿De qué carrera eres?|lab4_greet_4
+NODE|lab4_greet_4|Hazen|Right|De Civil, ¿y vos?|lab4_greet_5
+NODE|lab4_greet_5|Tu|Left|Ah, de compu.|lab4_mario_arrives
+
+# RUTA: OBSERVAR Y UNIÓN DE AMBAS RUTAS
+NODE|lab4_look_1|Narrador|Left|Te quedas analizando su apariencia por un buen rato hasta que inicia la clase. En eso llega otro compañero a la mesa.|lab4_mario_arrives
+NODE|lab4_mario_arrives|Mario|Right|Broo, disculpa que te moleste, ¿aquí está ocupado?|lab4_hazen_seat
+NODE|lab4_hazen_seat|Hazen|Left|Siéntate sin problema.|lab4_hugo_intro
+NODE|lab4_hugo_intro|Hugo|Right|Hola, chicos. Yo soy Hugo y seré su catedrático de Química durante este ciclo. El día de hoy solo haremos una breve actividad para que se conozcan mejor y así trabajar de mejor manera durante el laboratorio.|lab4_mario_familiar
+
+# DECISIÓN: MARIO RECONOCE A VINCENT
+NODE|lab4_mario_familiar|Mario|Right|Ey, te me haces algo conocido.|END
+CHOICE|lab4_mario_familiar|lab4_bad_memory_choice|Emmm, tengo algo de mala memoria|lab4_bad_memory_1
+CHOICE|lab4_mario_familiar|lab4_bro_choice|Amigazo, ¿qué onda?|lab4_bro_1
+NODE|lab4_bad_memory_1|Tu|Left|Emmm, tengo algo de mala memoria.|lab4_bad_memory_2
+NODE|lab4_bad_memory_2|Mario|Right|No te preocupes, me suele pasar igual jaja.|lab4_activity_hint
+NODE|lab4_bro_1|Tu|Left|Amigazo, ¿qué onda?|lab4_bro_2
+NODE|lab4_bro_2|Mario|Right|¡Mi broooo! ¿Qué cuentas?|lab4_activity_hint
+
+# ACTIVIDAD Y DECISIÓN SOBRE EL TEMA
+NODE|lab4_activity_hint|Hazen|Left|Parece que la actividad ya está por comenzar.|lab4_hugo_assignment
+NODE|lab4_hugo_assignment|Hugo|Right|Necesito que con los de su mesa hagan una breve presentación sobre un tema relacionado con la Química que forme parte de nuestra vida diaria.|lab4_mario_beer_suggestion
+NODE|lab4_mario_beer_suggestion|Mario|Right|¿Y si hablamos sobre chelas?|lab4_hazen_soda_suggestion
+NODE|lab4_hazen_soda_suggestion|Hazen|Left|Jaja, me llegas, pero creo que sería mejor enfocarlo en gaseosas.|lab4_topic_prompt
+NODE|lab4_topic_prompt|Hazen|Left|¿Qué opinas vos?|END
+CHOICE|lab4_topic_prompt|lab4_topic_soda|Hablar sobre gaseosas|lab4_soda_choice
+CHOICE|lab4_topic_prompt|lab4_topic_beer|Quedarse con chelas|lab4_beer_mario_expert
+
+# RUTA: GASEOSAS Narrador PRIMERA PRESENTACIÓN Y POSIBILIDAD DE PREPARARSE MEJOR
+NODE|lab4_soda_choice|Hazen|Left|Perfecto, ya tenemos un buen inicio.|lab4_soda_mario_reaction
+NODE|lab4_soda_mario_reaction|Mario|Right|Estaba más divertida la otra idea, pero sé que podemos hacer esto bien rápido.|lab4_who_goes_first
+NODE|lab4_who_goes_first|Hugo|Right|Muy bien, ¿qué grupo quiere pasar primero?|lab4_mario_volunteers
+NODE|lab4_mario_volunteers|Mario|Right|Podemos pasar nosotros.|lab4_hazen_practice
+NODE|lab4_hazen_practice|Hazen|Left|Yo preferiría practicar un poco más.|END
+CHOICE|lab4_hazen_practice|lab4_raise_hand_choice|Levantar la mano.|lab4_raise_hugo
+CHOICE|lab4_hazen_practice|lab4_wait_choice|Decides esperar.|lab4_wait_hazen
+
+# RUTA: LEVANTAR LA MANO Narrador PRESENTACIÓN INSUFICIENTEMENTE PREPARADA; LUEGO REGRESA A LA ELECCIÓN
+NODE|lab4_raise_hugo|Hugo|Right|Excelente, pasen al frente.|lab4_raise_mario
+NODE|lab4_raise_mario|Mario|Right|Esa es la actitud.|lab4_raise_hazen
+NODE|lab4_raise_hazen|Hazen|Left|Va, está bien, espero que estemos listos.|lab4_raise_teacher_asks
+NODE|lab4_raise_teacher_asks|Hugo|Right|Veamos, chicos, ¿qué prepararon ustedes?|lab4_poor_presentation
+NODE|lab4_poor_presentation|Narrador|Left|Tú y tu grupo procedieron a introducir el tema y hablaron un poco menos de lo esperado. Quizá hubiera sido más útil investigar un poco más.|lab4_poor_feedback
+NODE|lab4_poor_feedback|Hugo|Right|Me gustó mucho la iniciativa que tuvieron, muchachos, pero sí necesito que fundamenten mejor los ejemplos que me dieron. Con algo más de investigación puede salir.|lab4_hazen_practice
+
+# RUTA: ESPERAR Narrador MÁS TIEMPO PARA PREPARAR UNA BUENA PRESENTACIÓN
+NODE|lab4_wait_hazen|Hazen|Left|Gracias, así podremos prepararnos mejor.|lab4_wait_mario
+NODE|lab4_wait_mario|Mario|Right|Está bien, pero no quiero ser el último.|lab4_prepared_narration
+NODE|lab4_prepared_narration|Narrador|Left|Como tuvieron más tiempo para fundamentar el tema con principios químicos, prepararon una presentación bastante sólida.|lab4_prepared_hugo
+NODE|lab4_prepared_hugo|Hugo|Right|Bien, muchachos, es su turno.|lab4_prepared_presentation
+NODE|lab4_prepared_presentation|Narrador|Left|Tú y tu grupo hicieron una gran presentación. Demostraron con datos verídicos la composición de las bebidas gaseosas azucaradas, supieron responder las preguntas del maestro y hablaron con confianza, lo cual fue clave para transmitir el mensaje.|lab4_prepared_congratulations
+NODE|lab4_prepared_congratulations|Hugo|Right|Felicidades, grupo. Lo hicieron bastante bien.|lab4_good_mario
+NODE|lab4_good_mario|Mario|Right|¡Grande, Huguitoooo! Esto amerita un shucazo.|lab4_good_hazen
+NODE|lab4_good_hazen|Hazen|Left|¿Qué es eso?|lab4_good_mario_teaches
+NODE|lab4_good_mario_teaches|Mario|Right|Yo les enseño, aquí está fuera de la uni.|lab4_good_end
+NODE|lab4_good_end|Narrador|Left|Y de esta manera conociste nuevos amigos y un puesto de comida bastante bueno. Tomarte tu tiempo para dar el mejor resultado es clave para la excelencia académica que un estudiante UVG necesita. Good ending. Fin del juego.|END
+
+# RUTA: CHELAS Narrador FINAL ALTERNATIVO
+NODE|lab4_beer_mario_expert|Mario|Right|Aquí soy un experto.|lab4_beer_hazen_ready
+NODE|lab4_beer_hazen_ready|Hazen|Left|Esperemos que al profe le guste la presentación.|lab4_beer_mario_remarks
+NODE|lab4_beer_mario_remarks|Mario|Right|Jajaaaa, claro que sí. ¿A quién no le gusta una buena chela fría?|lab4_beer_hazen_reaction
+NODE|lab4_beer_hazen_reaction|Hazen|Left|Ey, eso también es una reacción química.|lab4_beer_mario_ready
+NODE|lab4_beer_mario_ready|Mario|Right|Tenemos todo para exponer.|lab4_beer_hugo_asks
+NODE|lab4_beer_hugo_asks|Hugo|Right|Muy bien, chicos, quiero ver su presentación.|lab4_beer_presentation
+NODE|lab4_beer_presentation|Narrador|Left|Tú y tu grupo hicieron una presentación que, a pesar de tener un tema curioso como eje principal, supo demostrar con datos verídicos algunas de las reacciones químicas que surgen con esta bebida, siempre recordando que no es sano beber en exceso.|lab4_beer_hugo_feedback
+NODE|lab4_beer_hugo_feedback|Hugo|Right|No me esperaba que presentaran algo así, pero estuvo muy bien fundamentado.|lab4_beer_end
+NODE|lab4_beer_end|Narrador|Left|Y de esta manera pudiste conocer algunos intereses de tus nuevos compañeros y descubrir que las clases pueden ser más interesantes cuando las asociamos con algo que ya conocemos. Final chelas. ¡Fin!|END

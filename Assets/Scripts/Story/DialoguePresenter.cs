@@ -73,6 +73,7 @@ public class DialoguePresenter : MonoBehaviour
         }
 
         dialogueUI.ShowNode(node);
+        characterPresenter.SetSpeakingCharacter(node.Speaker);
 
         if (node.Background != null)
         {
