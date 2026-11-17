@@ -25,9 +25,6 @@ public class DialogueUI : MonoBehaviour
     [SerializeField, Min(0f)] private float ellipsisPause = 0.5f;
     [SerializeField, Min(0f)] private float newlinePause = 0.2f;
 
-    [Header("Continue")]
-    [SerializeField] private Button continueButton;
-
     [Header("Choices")]
     [SerializeField] private Transform choicesContainer;
     [SerializeField] private Button choiceButtonPrefab;
@@ -52,9 +49,6 @@ public class DialogueUI : MonoBehaviour
         ApplyFont(speakerText);
         ApplyFont(dialogueText);
 
-        if (continueButton != null)
-            continueButton.onClick.AddListener(OnContinueClicked);
-
         if (dialogueText != null)
         {
             dialogueText.enableWordWrapping = true;
@@ -76,6 +70,11 @@ public class DialogueUI : MonoBehaviour
             choicesContainer.gameObject.activeInHierarchy &&
             choiceButtons.Count > 0;
 
+        bool spacePressed = Input.GetKeyDown(KeyCode.Space);
+        bool enterPressed =
+            Input.GetKeyDown(KeyCode.Return) ||
+            Input.GetKeyDown(KeyCode.KeypadEnter);
+
         if (choicesVisible)
         {
             if (Input.GetKeyDown(KeyCode.UpArrow) ||
@@ -89,26 +88,34 @@ public class DialogueUI : MonoBehaviour
                 SelectChoice(selectedChoiceIndex + 1);
             }
 
-            // Unity's EventSystem handles Enter when a choice is selected.
-            // Fall back to manual handling if no UI input module exists.
-            if ((EventSystem.current == null ||
-                 EventSystem.current.currentInputModule == null) &&
-                (Input.GetKeyDown(KeyCode.Return) ||
-                 Input.GetKeyDown(KeyCode.KeypadEnter)))
+            // Space confirms the highlighted choice directly.
+            if (spacePressed)
             {
-                choiceButtons[selectedChoiceIndex].onClick.Invoke();
+                if (selectedChoiceIndex >= 0 &&
+                    selectedChoiceIndex < choiceButtons.Count)
+                {
+                    choiceButtons[selectedChoiceIndex].onClick.Invoke();
+                }
+            }
+            // Enter is normally handled by Unity's EventSystem. Use a
+            // manual fallback if no active UI input module is available.
+            else if (enterPressed &&
+                     (EventSystem.current == null ||
+                      EventSystem.current.currentInputModule == null))
+            {
+                if (selectedChoiceIndex >= 0 &&
+                    selectedChoiceIndex < choiceButtons.Count)
+                {
+                    choiceButtons[selectedChoiceIndex].onClick.Invoke();
+                }
             }
 
             return;
         }
 
-        if ((EventSystem.current == null ||
-             EventSystem.current.currentInputModule == null) &&
-            (Input.GetKeyDown(KeyCode.Return) ||
-             Input.GetKeyDown(KeyCode.KeypadEnter)))
-        {
+        // With no choices displayed, either key advances/reveals dialogue.
+        if (spacePressed || enterPressed)
             OnContinueClicked();
-        }
     }
 
     private void SelectChoice(int index)
@@ -139,9 +146,6 @@ public class DialogueUI : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (continueButton != null)
-            continueButton.onClick.RemoveListener(OnContinueClicked);
-
         StopTyping();
     }
 
@@ -397,18 +401,6 @@ public class DialogueUI : MonoBehaviour
         int firstCharacter = GetCurrentPageFirstCharacter();
         dialogueText.maxVisibleCharacters = firstCharacter;
 
-        if (continueButton != null)
-        {
-            continueButton.gameObject.SetActive(true);
-
-            if (EventSystem.current != null)
-            {
-                EventSystem.current.SetSelectedGameObject(
-                    continueButton.gameObject
-                );
-            }
-        }
-
         typingCoroutine = StartCoroutine(TypeCurrentPage());
     }
 
@@ -472,7 +464,7 @@ public class DialogueUI : MonoBehaviour
             }
             else if (currentChar == '.' ||
                      currentChar == '!' ||
-                     currentChar == '?' )
+                     currentChar == '?')
             {
                 pause = sentencePause;
             }
@@ -530,13 +522,6 @@ public class DialogueUI : MonoBehaviour
             isLastPage)
         {
             ShowChoices(currentNode);
-
-            if (continueButton != null)
-                continueButton.gameObject.SetActive(false);
-        }
-        else if (continueButton != null)
-        {
-            continueButton.gameObject.SetActive(true);
         }
     }
 
@@ -616,6 +601,17 @@ public class DialogueUI : MonoBehaviour
         if (choicesContainer == null)
             return;
 
+        if (EventSystem.current != null)
+        {
+            GameObject selected = EventSystem.current.currentSelectedGameObject;
+
+            if (selected != null &&
+                selected.transform.IsChildOf(choicesContainer))
+            {
+                EventSystem.current.SetSelectedGameObject(null);
+            }
+        }
+
         for (int i = choicesContainer.childCount - 1; i >= 0; i--)
             Destroy(choicesContainer.GetChild(i).gameObject);
 
@@ -657,9 +653,6 @@ public class DialogueUI : MonoBehaviour
             dialogueText.maxVisibleCharacters = 0;
             dialogueText.pageToDisplay = 1;
         }
-
-        if (continueButton != null)
-            continueButton.gameObject.SetActive(false);
 
         ClearChoices();
     }

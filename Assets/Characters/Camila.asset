@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterId: camila
   displayName: Camila
-  sprite: {fileID: 21300000, guid: f910876ed1644d745a020d72caba6f07, type: 3}
+  sprite: {fileID: 21300000, guid: b2d3c9d9fc03b5343bebd96e335d810a, type: 3}

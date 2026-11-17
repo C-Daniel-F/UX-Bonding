@@ -14,8 +14,6 @@ public class DialogueNode
     [Header("Audio")]
     [SerializeField] private AudioClip soundEffect;
 
-    public AudioClip SoundEffect => soundEffect;
-
     [TextArea(3, 8)]
     [SerializeField] private string text;
 
@@ -30,6 +28,19 @@ public class DialogueNode
 
     [SerializeField] private bool hideLeftCharacter;
     [SerializeField] private bool hideRightCharacter;
+
+
+    [Header("Audio")]
+    [SerializeField]
+    private NodeMusicAction musicAction =
+        NodeMusicAction.KeepPrevious;
+
+    [SerializeField] private AudioClip musicClip;
+
+    public NodeMusicAction MusicAction => musicAction;
+    public AudioClip MusicClip => musicClip;
+    public AudioClip SoundEffect => soundEffect;
+
 
     public string NodeId => nodeId;
     public Character Speaker => speaker;
@@ -46,4 +57,10 @@ public class DialogueNode
 
     public bool HideLeftCharacter => hideLeftCharacter;
     public bool HideRightCharacter => hideRightCharacter;
+}
+public enum NodeMusicAction
+{
+    KeepPrevious,
+    ChangeMusic,
+    StopMusic
 }

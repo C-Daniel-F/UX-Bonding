@@ -74,6 +74,7 @@ public class DialoguePresenter : MonoBehaviour
 
         dialogueUI.ShowNode(node);
         characterPresenter.SetSpeakingCharacter(node.Speaker);
+        audioPresenter.EnterNode(node);
 
         if (node.Background != null)
         {
@@ -100,7 +101,7 @@ public class DialoguePresenter : MonoBehaviour
 
         if (runtime != null)
         {
-            audioPresenter.UpdateMusic(runtime.CurrentScene);
+            audioPresenter.EnterNode(node);
         }
 
         audioPresenter.PlaySoundEffect(node.SoundEffect);

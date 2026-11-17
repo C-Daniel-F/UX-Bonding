@@ -1,3 +1,4 @@
+
 using UnityEngine;
 
 public class AudioPresenter : MonoBehaviour
@@ -6,83 +7,76 @@ public class AudioPresenter : MonoBehaviour
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private AudioSource soundEffectSource;
 
-
-    private AudioClip currentMusic;
-
-
     private void Awake()
     {
         if (musicSource != null)
         {
             musicSource.loop = true;
+            musicSource.playOnAwake = false;
         }
+
+        if (soundEffectSource != null)
+            soundEffectSource.playOnAwake = false;
     }
 
-
-
-    public void UpdateMusic(StoryScene scene)
+    public void EnterNode(DialogueNode node)
     {
-        if (scene == null)
-        {
+        if (node == null)
             return;
+
+        switch (node.MusicAction)
+        {
+            case NodeMusicAction.KeepPrevious:
+                break;
+
+            case NodeMusicAction.ChangeMusic:
+                ChangeMusic(node.MusicClip);
+                break;
+
+            case NodeMusicAction.StopMusic:
+                StopMusic();
+                break;
         }
 
-        AudioClip newMusic = scene.Music;
+        if (node.SoundEffect != null)
+            PlaySoundEffect(node.SoundEffect);
+    }
 
-        if (newMusic == null)
-        {
+    private void ChangeMusic(AudioClip clip)
+    {
+        if (musicSource == null || clip == null)
             return;
-        }
 
-
-        if (newMusic == currentMusic &&
-            musicSource.isPlaying)
-        {
+        if (musicSource.clip == clip && musicSource.isPlaying)
             return;
-        }
 
-        currentMusic = newMusic;
-
-        musicSource.clip = currentMusic;
+        musicSource.Stop();
+        musicSource.clip = clip;
         musicSource.Play();
     }
 
-
-    public void PlaySoundEffect(AudioClip soundEffect)
+    public void PlaySoundEffect(AudioClip clip)
     {
-        if (soundEffect == null ||
-            soundEffectSource == null)
-        {
+        if (clip == null || soundEffectSource == null)
             return;
-        }
 
-        soundEffectSource.PlayOneShot(soundEffect);
+        soundEffectSource.PlayOneShot(clip);
     }
-
-
-    // =========================
-    // STOP
-    // =========================
 
     public void StopMusic()
     {
-        if (musicSource != null)
-        {
-            musicSource.Stop();
-            musicSource.clip = null;
-        }
+        if (musicSource == null)
+            return;
 
-        currentMusic = null;
+        musicSource.Stop();
+        musicSource.clip = null;
     }
-
 
     public void StopAll()
     {
         StopMusic();
 
         if (soundEffectSource != null)
-        {
             soundEffectSource.Stop();
-        }
     }
 }
